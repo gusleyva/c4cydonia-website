@@ -1,0 +1,103 @@
+---
+// Header.astro
+import ThemeToggle from './ThemeToggle.astro';
+import LanguageToggle from './LanguageToggle.astro';
+
+// Get current page path for highlighting active nav item
+const { pathname } = Astro.url;
+
+// Navigation items - we'll have both Spanish and English versions
+const navItems = {
+  es: [
+    { text: "Inicio", href: "/" },
+    { text: "Servicios", href: "/services" },
+    { text: "Sobre Nosotros", href: "/about" },
+    { text: "Blog", href: "/blog" },
+    { text: "Contacto", href: "/contact" },
+  ],
+  en: [
+    { text: "Home", href: "/" },
+    { text: "Services", href: "/services" },
+    { text: "About Us", href: "/about" },
+    { text: "Blog", href: "/blog" },
+    { text: "Contact", href: "/contact" },
+  ]
+};
+
+// For now, default to Spanish navigation, we'll implement language switching later
+const currentLang = "es";
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-gray-900/80">
+  <nav class="container mx-auto flex h-16 items-center justify-between px-4">
+    <div class="flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/images/logo.svg" alt="C4Cydonia Logo" class="h-8 w-8 rounded-full" />
+        <span class="text-xl font-bold">C4Cydonia</span>
+      </a>
+    </div>
+
+    <div class="hidden md:flex md:items-center md:gap-6">
+      {navItems[currentLang].map((item) => (
+        <a
+          href={item.href}
+          class="text-sm font-medium text-gray-700 transition-colors hover:text-primary-600 dark:text-gray-200 dark:hover:text-primary-400"
+        >
+          {item.text}
+        </a>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-4">
+      <LanguageToggle />
+      <ThemeToggle />
+      
+      <button
+        type="button"
+        class="md:hidden"
+        aria-label="Toggle menu"
+        id="menu-button"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    class="hidden md:hidden"
+    id="mobile-menu"
+  >
+    <div class="space-y-1 px-4 pb-3 pt-2">
+      {navItems[currentLang].map((item) => (
+        <a
+          href={item.href}
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-600 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-primary-400"
+        >
+          {item.text}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

@@ -1,0 +1,266 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+interface Value {
+  title: string;
+  description: string;
+}
+
+interface TeamMember {
+  name: string;
+  role: string;
+  description: string;
+}
+
+interface Content {
+  meta: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    heading: string;
+    subheading: string;
+  };
+  mission: {
+    heading: string;
+    content: string;
+  };
+  vision: {
+    heading: string;
+    content: string;
+  };
+  values: {
+    heading: string;
+    items: Value[];
+  };
+  team: {
+    heading: string;
+    subheading: string;
+    members: TeamMember[];
+  };
+}
+
+interface ContentMap {
+  [key: string]: Content;
+}
+
+const content: ContentMap = {
+  es: {
+    meta: {
+      title: "Sobre Nosotros | C4Cydonia",
+      description: "Conozca más sobre C4Cydonia, nuestra misión, visión y equipo de profesionales apasionados por la tecnología."
+    },
+    hero: {
+      heading: "Sobre Nosotros",
+      subheading: "Transformando el futuro digital con innovación y excelencia"
+    },
+    mission: {
+      heading: "Nuestra Misión",
+      content: "En C4Cydonia, nos dedicamos a proporcionar soluciones tecnológicas innovadoras que impulsen el crecimiento y la eficiencia de nuestros clientes. Creemos en la transformación digital como un catalizador para el éxito empresarial."
+    },
+    vision: {
+      heading: "Nuestra Visión",
+      content: "Aspiramos a ser líderes en la industria de la consultoría y desarrollo de software, reconocidos por nuestra excelencia técnica, compromiso con la calidad y capacidad para entregar soluciones que superen las expectativas."
+    },
+    values: {
+      heading: "Nuestros Valores",
+      items: [
+        {
+          title: "Excelencia",
+          description: "Buscamos la excelencia en todo lo que hacemos, desde el código que escribimos hasta el servicio que brindamos."
+        },
+        {
+          title: "Innovación",
+          description: "Fomentamos la innovación y la creatividad, explorando constantemente nuevas tecnologías y metodologías."
+        },
+        {
+          title: "Colaboración",
+          description: "Creemos en el poder de la colaboración y el trabajo en equipo para lograr resultados excepcionales."
+        },
+        {
+          title: "Integridad",
+          description: "Actuamos con honestidad y transparencia en todas nuestras interacciones."
+        }
+      ]
+    },
+    team: {
+      heading: "Nuestro Equipo",
+      subheading: "Profesionales apasionados por la tecnología",
+      members: [
+        {
+          name: "Equipo de Desarrollo",
+          role: "Desarrollo de Software",
+          description: "Expertos en múltiples tecnologías y frameworks, comprometidos con la calidad y la innovación."
+        },
+        {
+          name: "Equipo de Consultoría",
+          role: "Consultoría Tecnológica",
+          description: "Asesores estratégicos con amplia experiencia en transformación digital y optimización de procesos."
+        },
+        {
+          name: "Equipo de Diseño",
+          role: "Diseño UX/UI",
+          description: "Diseñadores centrados en crear experiencias de usuario excepcionales y interfaces intuitivas."
+        }
+      ]
+    }
+  },
+  en: {
+    meta: {
+      title: "About Us | C4Cydonia",
+      description: "Learn more about C4Cydonia, our mission, vision, and team of technology professionals."
+    },
+    hero: {
+      heading: "About Us",
+      subheading: "Transforming the digital future with innovation and excellence"
+    },
+    mission: {
+      heading: "Our Mission",
+      content: "At C4Cydonia, we are dedicated to providing innovative technology solutions that drive growth and efficiency for our clients. We believe in digital transformation as a catalyst for business success."
+    },
+    vision: {
+      heading: "Our Vision",
+      content: "We aspire to be leaders in the software consulting and development industry, recognized for our technical excellence, commitment to quality, and ability to deliver solutions that exceed expectations."
+    },
+    values: {
+      heading: "Our Values",
+      items: [
+        {
+          title: "Excellence",
+          description: "We pursue excellence in everything we do, from the code we write to the service we provide."
+        },
+        {
+          title: "Innovation",
+          description: "We foster innovation and creativity, constantly exploring new technologies and methodologies."
+        },
+        {
+          title: "Collaboration",
+          description: "We believe in the power of collaboration and teamwork to achieve exceptional results."
+        },
+        {
+          title: "Integrity",
+          description: "We act with honesty and transparency in all our interactions."
+        }
+      ]
+    },
+    team: {
+      heading: "Our Team",
+      subheading: "Professionals passionate about technology",
+      members: [
+        {
+          name: "Development Team",
+          role: "Software Development",
+          description: "Experts in multiple technologies and frameworks, committed to quality and innovation."
+        },
+        {
+          name: "Consulting Team",
+          role: "Technology Consulting",
+          description: "Strategic advisors with extensive experience in digital transformation and process optimization."
+        },
+        {
+          name: "Design Team",
+          role: "UX/UI Design",
+          description: "Designers focused on creating exceptional user experiences and intuitive interfaces."
+        }
+      ]
+    }
+  }
+};
+
+const currentLang = Astro.currentLocale || 'en';
+const t = content[currentLang];
+---
+
+<MainLayout title={t.meta.title} description={t.meta.description}>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-white dark:bg-gray-900 py-24 sm:py-32">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+          {t.hero.heading}
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+          {t.hero.subheading}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
+    <div class="container mx-auto px-4">
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {t.mission.heading}
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+            {t.mission.content}
+          </p>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {t.vision.heading}
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+            {t.vision.content}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="bg-white dark:bg-gray-900 py-24 sm:py-32">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          {t.values.heading}
+        </h2>
+      </div>
+      <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+          {t.values.items.map((value: Value) => (
+            <div class="flex flex-col">
+              <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                {value.title}
+              </dt>
+              <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-400">
+                <p class="flex-auto">{value.description}</p>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          {t.team.heading}
+        </h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+          {t.team.subheading}
+        </p>
+      </div>
+      <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+          {t.team.members.map((member: TeamMember) => (
+            <div class="flex flex-col">
+              <dt class="text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                {member.name}
+              </dt>
+              <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-400">
+                <p class="text-sm font-medium text-primary-600 dark:text-primary-400">{member.role}</p>
+                <p class="mt-2 flex-auto">{member.description}</p>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+</MainLayout>

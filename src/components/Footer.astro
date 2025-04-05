@@ -1,0 +1,179 @@
+---
+// Footer.astro
+import VisitCounter from './VisitCounter.astro';
+
+const currentYear = new Date().getFullYear();
+const footerLinks = {
+  es: {
+    sections: [
+      {
+        title: "Servicios",
+        links: [
+          { text: "Consultoría de Software", href: "/services#consulting" },
+          { text: "Desarrollo Web", href: "/services#web" },
+          { text: "Desarrollo Móvil", href: "/services#mobile" },
+          { text: "Servicios Cloud", href: "/services#cloud" }
+        ]
+      },
+      {
+        title: "Compañía",
+        links: [
+          { text: "Sobre Nosotros", href: "/about" },
+          { text: "Equipo", href: "/about#team" },
+          // Future pages
+          // { text: "Blog", href: "/blog" },
+          // { text: "Contacto", href: "/contact" }
+        ]
+      },
+      {
+        title: "Legal",
+        links: [
+          { text: "Política de Privacidad", href: "#" },
+          { text: "Términos de Servicio", href: "#" }
+        ]
+      }
+    ],
+    copyright: `© ${currentYear} ConsultDev. Todos los derechos reservados.`
+  },
+  en: {
+    sections: [
+      {
+        title: "Services",
+        links: [
+          { text: "Software Consulting", href: "/services#consulting" },
+          { text: "Web Development", href: "/services#web" },
+          { text: "Mobile Development", href: "/services#mobile" },
+          { text: "Cloud Services", href: "/services#cloud" }
+        ]
+      },
+      {
+        title: "Company",
+        links: [
+          { text: "About Us", href: "/about" },
+          { text: "Team", href: "/about#team" },
+          // Future pages
+          // { text: "Blog", href: "/blog" },
+          // { text: "Contact", href: "/contact" }
+        ]
+      },
+      {
+        title: "Legal",
+        links: [
+          { text: "Privacy Policy", href: "#" },
+          { text: "Terms of Service", href: "#" }
+        ]
+      }
+    ],
+    copyright: `© ${currentYear} ConsultDev. All rights reserved.`
+  }
+};
+
+// Default to Spanish for now
+const currentLang = "es";
+const content = footerLinks[currentLang];
+---
+
+<footer class="bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+      <!-- Company Info -->
+      <div class="space-y-4">
+        <a href="/" class="flex items-center gap-2">
+          <img src="/images/logo.svg" alt="C4Cydonia Logo" class="h-8 w-8 rounded-full" />
+          <span class="text-xl font-bold">C4Cydonia</span>
+        </a>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Transformando ideas en soluciones digitales innovadoras.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
+          Enlaces Rápidos
+        </h3>
+        <ul class="mt-4 space-y-2">
+          <li>
+            <a href="/about" class="text-sm text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+              Sobre Nosotros
+            </a>
+          </li>
+          <li>
+            <a href="/services" class="text-sm text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+              Servicios
+            </a>
+          </li>
+          <li>
+            <a href="/blog" class="text-sm text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="text-sm text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+              Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
+          Servicios
+        </h3>
+        <ul class="mt-4 space-y-2">
+          <li>
+            <a href="/services#consulting" class="text-sm text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+              Consultoría Tecnológica
+            </a>
+          </li>
+          <li>
+            <a href="/services#web" class="text-sm text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+              Desarrollo Web
+            </a>
+          </li>
+          <li>
+            <a href="/services#mobile" class="text-sm text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+              Desarrollo Móvil
+            </a>
+          </li>
+          <li>
+            <a href="/services#cloud" class="text-sm text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+              Servicios Cloud
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-white">
+          Contacto
+        </h3>
+        <ul class="mt-4 space-y-2">
+          <li class="text-sm text-gray-600 dark:text-gray-400">
+            <a href="mailto:contact@c4cydonia.com" class="hover:text-primary-600 dark:hover:text-primary-400">
+              contact@c4cydonia.com
+            </a>
+          </li>
+          <li class="text-sm text-gray-600 dark:text-gray-400">
+            <a href="https://linkedin.com/company/c4cydonia" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400">
+              LinkedIn
+            </a>
+          </li>
+          <li class="text-sm text-gray-600 dark:text-gray-400">
+            <a href="https://github.com/c4cydonia" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400">
+              GitHub
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8">
+      <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+        &copy; {currentYear} C4Cydonia. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>

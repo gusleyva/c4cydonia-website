@@ -1,0 +1,278 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Language translations
+const translations = {
+  es: {
+    title: "Servicios | Consultoría y Desarrollo de Software",
+    pageTitle: "Nuestros Servicios",
+    pageIntro: "Ofrecemos una amplia gama de servicios de consultoría y desarrollo de software para ayudar a su empresa a alcanzar sus objetivos tecnológicos.",
+    service1Title: "Consultoría Tecnológica",
+    service1Desc: "Asesoramiento experto para guiar su estrategia digital y optimizar sus procesos tecnológicos.",
+    service1Features: [
+      "Auditoría de sistemas",
+      "Planificación estratégica",
+      "Optimización de procesos",
+      "Evaluación de seguridad"
+    ],
+    service2Title: "Desarrollo de Software a Medida",
+    service2Desc: "Creamos soluciones de software personalizadas que satisfacen las necesidades específicas de su negocio.",
+    service2Features: [
+      "Aplicaciones web",
+      "Aplicaciones móviles",
+      "Sistemas empresariales",
+      "Integraciones API"
+    ],
+    service3Title: "Soluciones en la Nube",
+    service3Desc: "Servicios completos para migrar, gestionar y optimizar su infraestructura en la nube.",
+    service3Features: [
+      "Migración a la nube",
+      "Arquitectura cloud-native",
+      "DevOps e implementación continua",
+      "Optimización de costos"
+    ],
+    service4Title: "Desarrollo Web",
+    service4Desc: "Diseño y desarrollo de sitios web atractivos y funcionales que representan su marca en línea.",
+    service4Features: [
+      "Diseño UX/UI responsivo",
+      "Desarrollo frontend y backend",
+      "CMS personalizados",
+      "Optimización SEO"
+    ],
+    service5Title: "Inteligencia Artificial y Machine Learning",
+    service5Desc: "Implementamos soluciones inteligentes que automatizan procesos y generan insights valiosos.",
+    service5Features: [
+      "Análisis predictivo",
+      "Procesamiento de lenguaje natural",
+      "Sistemas de recomendación",
+      "Automatización inteligente"
+    ],
+    service6Title: "Mantenimiento y Soporte",
+    service6Desc: "Servicios continuos para mantener sus sistemas funcionando de manera óptima y segura.",
+    service6Features: [
+      "Soporte técnico",
+      "Actualizaciones de seguridad",
+      "Monitoreo de rendimiento",
+      "Resolución de problemas"
+    ],
+    cta: "¿Interesado en nuestros servicios?",
+    ctaButton: "Contáctenos"
+  },
+  en: {
+    title: "Services | Consultancy and Software Development",
+    pageTitle: "Our Services",
+    pageIntro: "We offer a wide range of consultancy and software development services to help your company achieve its technological goals.",
+    service1Title: "Technology Consulting",
+    service1Desc: "Expert advice to guide your digital strategy and optimize your technological processes.",
+    service1Features: [
+      "Systems audit",
+      "Strategic planning",
+      "Process optimization",
+      "Security assessment"
+    ],
+    service2Title: "Custom Software Development",
+    service2Desc: "We create customized software solutions that meet the specific needs of your business.",
+    service2Features: [
+      "Web applications",
+      "Mobile applications",
+      "Enterprise systems",
+      "API integrations"
+    ],
+    service3Title: "Cloud Solutions",
+    service3Desc: "Comprehensive services to migrate, manage, and optimize your cloud infrastructure.",
+    service3Features: [
+      "Cloud migration",
+      "Cloud-native architecture",
+      "DevOps and continuous deployment",
+      "Cost optimization"
+    ],
+    service4Title: "Web Development",
+    service4Desc: "Design and development of attractive and functional websites that represent your brand online.",
+    service4Features: [
+      "Responsive UX/UI design",
+      "Frontend and backend development",
+      "Custom CMS",
+      "SEO optimization"
+    ],
+    service5Title: "Artificial Intelligence and Machine Learning",
+    service5Desc: "We implement intelligent solutions that automate processes and generate valuable insights.",
+    service5Features: [
+      "Predictive analytics",
+      "Natural language processing",
+      "Recommendation systems",
+      "Intelligent automation"
+    ],
+    service6Title: "Maintenance and Support",
+    service6Desc: "Ongoing services to keep your systems running optimally and securely.",
+    service6Features: [
+      "Technical support",
+      "Security updates",
+      "Performance monitoring",
+      "Troubleshooting"
+    ],
+    cta: "Interested in our services?",
+    ctaButton: "Contact Us"
+  }
+};
+
+// Get language from URL parameter or default to Spanish
+const lang = Astro.url.searchParams.get('lang') || 'es';
+const t = translations[lang === 'en' ? 'en' : 'es'];
+---
+
+<MainLayout title={t.title} lang={lang === 'en' ? 'en' : 'es'}>
+  <!-- Page Header -->
+  <section class="bg-primary-800 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-bold mb-4">{t.pageTitle}</h1>
+      <p class="text-xl max-w-3xl mx-auto">{t.pageIntro}</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 bg-surface">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 mb-12">
+        <!-- Service 1 -->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service1Title}</h3>
+          <p class="mb-6">{t.service1Desc}</p>
+          <ul class="space-y-2">
+            {t.service1Features.map(feature => (
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service2Title}</h3>
+          <p class="mb-6">{t.service2Desc}</p>
+          <ul class="space-y-2">
+            {t.service2Features.map(feature => (
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 mb-12">
+        <!-- Service 3 -->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service3Title}</h3>
+          <p class="mb-6">{t.service3Desc}</p>
+          <ul class="space-y-2">
+            {t.service3Features.map(feature => (
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service4Title}</h3>
+          <p class="mb-6">{t.service4Desc}</p>
+          <ul class="space-y-2">
+            {t.service4Features.map(feature => (
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Service 5 -->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service5Title}</h3>
+          <p class="mb-6">{t.service5Desc}</p>
+          <ul class="space-y-2">
+            {t.service5Features.map(feature => (
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service6Title}</h3>
+          <p class="mb-6">{t.service6Desc}</p>
+          <ul class="space-y-2">
+            {t.service6Features.map(feature => (
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-accent text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-8">{t.cta}</h2>
+      <a href={`/contact${lang === 'en' ? '?lang=en' : ''}`} class="btn bg-white text-accent hover:bg-gray-100 font-bold py-3 px-8 rounded-md transition duration-300">
+        {t.ctaButton}
+      </a>
+    </div>
+  </section>
+</MainLayout>

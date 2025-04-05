@@ -1,0 +1,365 @@
+---
+// src/pages/index.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import VisitCounter from '../components/VisitCounter.astro';
+
+interface Feature {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface Content {
+  meta: {
+    title: string;
+    description: string;
+  };
+  hero: {
+    heading: string;
+    subheading: string;
+    cta: string;
+    secondaryCta: string;
+  };
+  features: {
+    heading: string;
+    items: Feature[];
+  };
+  services: {
+    heading: string;
+    subheading: string;
+    cta: string;
+    items: Feature[];
+  };
+  cta: {
+    heading: string;
+    subheading: string;
+    primary: string;
+    secondary: string;
+  };
+}
+
+interface ContentMap {
+  [key: string]: Content;
+}
+
+const content: ContentMap = {
+  es: {
+    meta: {
+      title: "C4Cydonia | Consultoría y Desarrollo de Software",
+      description: "Soluciones tecnológicas innovadoras y consultoría de software personalizada para empresas de todos los tamaños."
+    },
+    hero: {
+      heading: "Transformamos Ideas en Soluciones Digitales",
+      subheading: "Consultoría experta y desarrollo de software a medida para hacer crecer su negocio",
+      cta: "Nuestros Servicios",
+      secondaryCta: "Contáctanos"
+    },
+    features: {
+      heading: "Por qué elegirnos",
+      items: [
+        {
+          title: "Experiencia Técnica",
+          description: "Nuestro equipo cuenta con amplia experiencia en las tecnologías más recientes y mejores prácticas de desarrollo.",
+          icon: "code"
+        },
+        {
+          title: "Soluciones Personalizadas",
+          description: "Creamos soluciones adaptadas específicamente a las necesidades y objetivos únicos de su negocio.",
+          icon: "customize"
+        },
+        {
+          title: "Enfoque Colaborativo",
+          description: "Trabajamos en estrecha colaboración con usted durante todo el proceso para garantizar resultados óptimos.",
+          icon: "team"
+        },
+        {
+          title: "Soporte Continuo",
+          description: "Ofrecemos mantenimiento y soporte técnico después del lanzamiento para garantizar el éxito a largo plazo.",
+          icon: "support"
+        }
+      ]
+    },
+    services: {
+      heading: "Nuestros Servicios",
+      subheading: "Soluciones completas para todas sus necesidades tecnológicas",
+      cta: "Ver Todos los Servicios",
+      items: [
+        {
+          title: "Consultoría Tecnológica",
+          description: "Asesoramiento estratégico para optimizar su infraestructura tecnológica y procesos digitales.",
+          icon: "consulting"
+        },
+        {
+          title: "Desarrollo Web",
+          description: "Sitios web atractivos, aplicaciones web escalables y plataformas personalizadas.",
+          icon: "web"
+        },
+        {
+          title: "Desarrollo Móvil",
+          description: "Aplicaciones nativas e híbridas para iOS y Android con experiencias de usuario excepcionales.",
+          icon: "mobile"
+        },
+        {
+          title: "Servicios Cloud",
+          description: "Implementación, migración y gestión de soluciones en la nube para máxima eficiencia.",
+          icon: "cloud"
+        }
+      ]
+    },
+    cta: {
+      heading: "¿Listo para transformar su negocio?",
+      subheading: "Comencemos hoy a construir su solución digital.",
+      primary: "Contactar Ahora",
+      secondary: "Conocer Más"
+    }
+  },
+  en: {
+    meta: {
+      title: "C4Cydonia | Software Consulting and Development",
+      description: "Innovative technology solutions and custom software consulting for businesses of all sizes."
+    },
+    hero: {
+      heading: "Transforming Ideas into Digital Solutions",
+      subheading: "Expert consulting and custom software development to grow your business",
+      cta: "Our Services",
+      secondaryCta: "Contact Us"
+    },
+    features: {
+      heading: "Why Choose Us",
+      items: [
+        {
+          title: "Technical Expertise",
+          description: "Our team has extensive experience with the latest technologies and development best practices.",
+          icon: "code"
+        },
+        {
+          title: "Tailored Solutions",
+          description: "We create solutions specifically adapted to your business's unique needs and goals.",
+          icon: "customize"
+        },
+        {
+          title: "Collaborative Approach",
+          description: "We work closely with you throughout the process to ensure optimal results.",
+          icon: "team"
+        },
+        {
+          title: "Ongoing Support",
+          description: "We provide maintenance and technical support after launch to ensure long-term success.",
+          icon: "support"
+        }
+      ]
+    },
+    services: {
+      heading: "Our Services",
+      subheading: "Comprehensive solutions for all your technology needs",
+      cta: "View All Services",
+      items: [
+        {
+          title: "Technology Consulting",
+          description: "Strategic advice to optimize your technology infrastructure and digital processes.",
+          icon: "consulting"
+        },
+        {
+          title: "Web Development",
+          description: "Attractive websites, scalable web applications, and custom platforms.",
+          icon: "web"
+        },
+        {
+          title: "Mobile Development",
+          description: "Native and hybrid applications for iOS and Android with exceptional user experiences.",
+          icon: "mobile"
+        },
+        {
+          title: "Cloud Services",
+          description: "Implementation, migration, and management of cloud solutions for maximum efficiency.",
+          icon: "cloud"
+        }
+      ]
+    },
+    cta: {
+      heading: "Ready to transform your business?",
+      subheading: "Let's start building your digital solution today.",
+      primary: "Contact Now",
+      secondary: "Learn More"
+    }
+  }
+};
+
+// Default to Spanish for now
+const currentLang = Astro.currentLocale;
+const pageContent = content[currentLang];
+---
+
+<MainLayout title={pageContent.meta.title} description={pageContent.meta.description}>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4 py-24 sm:py-32">
+      <div class="grid gap-12 lg:grid-cols-2 lg:gap-8">
+        <div class="flex flex-col justify-center">
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+            {pageContent.hero.heading}
+          </h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+            {pageContent.hero.subheading}
+          </p>
+          <div class="mt-10 flex items-center gap-x-6">
+            <a
+              href="/services"
+              class="btn btn-primary"
+            >
+              {pageContent.hero.cta}
+            </a>
+            <a
+              href="/contact"
+              class="btn btn-secondary"
+            >
+              {pageContent.hero.secondaryCta}
+            </a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
+            <img
+              src="/images/hero-image.svg"
+              alt="Hero image"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          {pageContent.features.heading}
+        </h2>
+      </div>
+      <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+          {pageContent.features.items.map((feature: Feature) => (
+            <div class="flex flex-col">
+              <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
+                <svg
+                  class="h-5 w-5 flex-none text-primary-600"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                {feature.title}
+              </dt>
+              <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-400">
+                <p class="flex-auto">{feature.description}</p>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section bg-slate-50 dark:bg-slate-800">
+    <div class="container-padded">
+      <div class="text-center mb-16">
+        <h2 class="heading-2 mb-4">{pageContent.services.heading}</h2>
+        <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          {pageContent.services.subheading}
+        </p>
+        <div class="h-1 w-20 bg-blue-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {pageContent.services.items.map(service => (
+          <div class="card p-8 flex hover-lift">
+            <!-- Service Icon (placeholder) -->
+            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0">
+              {service.icon === "consulting" && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              )}
+              {service.icon === "web" && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              )}
+              {service.icon === "mobile" && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              )}
+              {service.icon === "cloud" && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              )}
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">{service.title}</h3>
+              <p class="text-slate-600 dark:text-slate-400">{service.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center">
+        <a href="/services" class="btn btn-primary">
+          {pageContent.services.cta}
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Call to Action Section -->
+  <section class="bg-gradient-primary text-white py-20">
+    <div class="container-padded text-center">
+      <h2 class="heading-2 text-white mb-4">{pageContent.cta.heading}</h2>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto mb-8">{pageContent.cta.subheading}</p>
+      <div class="flex justify-center flex-wrap gap-4">
+        <a href="#contact-form" class="btn bg-white text-blue-600 hover:bg-gray-100 focus:ring-white">
+          {pageContent.cta.primary}
+        </a>
+        <a href="/about" class="btn btn-outline border-white/30 text-white hover:bg-white/10 focus:ring-white">
+          {pageContent.cta.secondary}
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Placeholder for Contact Form (will be implemented later) -->
+  <section id="contact-form" class="section bg-white dark:bg-slate-900">
+    <div class="container-padded text-center">
+      <h2 class="heading-3 mb-4">
+        {currentLang === "es" ? "Formulario de Contacto" : "Contact Form"}
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 mb-8">
+        {currentLang === "es" 
+          ? "El formulario de contacto estará disponible próximamente." 
+          : "The contact form will be available soon."}
+      </p>
+      <div class="p-8 border border-dashed border-slate-300 dark:border-slate-700 rounded-lg">
+        <p class="text-blue-600 dark:text-blue-400">
+          {currentLang === "es" 
+            ? "Estamos trabajando en esta función." 
+            : "We're working on this feature."}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit Counter -->
+  <div class="fixed bottom-4 right-4">
+    <VisitCounter />
+  </div>
+</MainLayout>

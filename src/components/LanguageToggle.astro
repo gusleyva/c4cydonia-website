@@ -1,0 +1,22 @@
+---
+const currentLang = Astro.currentLocale;
+---
+
+<button
+  id="language-toggle"
+  class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-primary-600 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-primary-400"
+  aria-label="Switch language"
+>
+  <span class="hidden sm:inline">{currentLang === 'es' ? 'English' : 'Español'}</span>
+  <span class="sm:hidden">{currentLang === 'es' ? 'EN' : 'ES'}</span>
+</button>
+
+<script>
+  const languageToggle = document.getElementById('language-toggle');
+  
+  languageToggle?.addEventListener('click', () => {
+    const currentLang = document.documentElement.lang;
+    const newLang = currentLang === 'es' ? 'en' : 'es';
+    window.location.href = `/${newLang}${window.location.pathname.substring(3)}`;
+  });
+</script> 
