@@ -46,3 +46,84 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+# C4cydonia Website
+
+This is the official website for C4cydonia, built with Astro and Tailwind CSS.
+
+## Features
+
+- Bilingual support (English and Spanish)
+- Responsive design
+- Blog with company and technical articles
+- Services showcase
+- Contact form
+- Modern UI with Tailwind CSS
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Deployment to Vercel
+
+This project is configured for easy deployment to Vercel.
+
+### Automatic Deployment
+
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+2. Connect your repository to Vercel
+3. Vercel will automatically detect the Astro framework and configure the build settings
+
+### Manual Deployment
+
+1. Install the Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+
+2. Login to Vercel:
+   ```bash
+   vercel login
+   ```
+
+3. Deploy the project:
+   ```bash
+   vercel
+   ```
+
+4. For production deployment:
+   ```bash
+   vercel --prod
+   ```
+
+## Environment Variables
+
+The following environment variables can be configured in Vercel:
+
+- `PUBLIC_SITE_URL`: The public URL of your site (optional)
+- `FORMSPREE_ENDPOINT`: Your Formspree endpoint for the contact form
+
+## Project Structure
+
+- `src/pages/`: Astro pages
+- `src/components/`: Reusable components
+- `src/layouts/`: Page layouts
+- `src/styles/`: Global styles
+- `src/content/`: Content for blog posts
+- `public/`: Static assets
+
+## License
+
+All rights reserved. © C4cydonia

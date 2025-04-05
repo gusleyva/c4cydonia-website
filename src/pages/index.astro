@@ -85,6 +85,16 @@ const content: ContentMap = {
       cta: "Ver Todos los Servicios",
       items: [
         {
+          title: "Evaluación de Candidatos",
+          description: "Servicio especializado para evaluar y seleccionar el talento técnico más adecuado para su organización.",
+          icon: "interviewer"
+        },
+        {
+          title: "Capacitación Empresarial",
+          description: "Programas de formación diseñados para potenciar las habilidades técnicas de su equipo y mejorar la productividad.",
+          icon: "training"
+        },
+        {
           title: "Consultoría Tecnológica",
           description: "Asesoramiento estratégico para optimizar su infraestructura tecnológica y procesos digitales.",
           icon: "consulting"
@@ -155,6 +165,16 @@ const content: ContentMap = {
       cta: "View All Services",
       items: [
         {
+          title: "Candidate Evaluation",
+          description: "Specialized service to evaluate and select the most suitable technical talent for your organization.",
+          icon: "interviewer"
+        },
+        {
+          title: "Company Training",
+          description: "Training programs designed to enhance your team's technical skills and improve productivity.",
+          icon: "training"
+        },
+        {
           title: "Technology Consulting",
           description: "Strategic advice to optimize your technology infrastructure and digital processes.",
           icon: "consulting"
@@ -186,7 +206,7 @@ const content: ContentMap = {
 };
 
 // Default to Spanish for now
-const currentLang = Astro.currentLocale;
+const currentLang = Astro.currentLocale || 'es';
 const pageContent = content[currentLang];
 ---
 
@@ -268,59 +288,198 @@ const pageContent = content[currentLang];
   </section>
 
   <!-- Services Section -->
-  <section class="section bg-slate-50 dark:bg-slate-800">
-    <div class="container-padded">
-      <div class="text-center mb-16">
-        <h2 class="heading-2 mb-4">{pageContent.services.heading}</h2>
-        <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
-          {pageContent.services.subheading}
-        </p>
-        <div class="h-1 w-20 bg-blue-500 mx-auto"></div>
-      </div>
+  <section class="py-16 bg-surface">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">{pageContent.services.heading}</h2>
+      <p class="text-xl text-center mb-12 max-w-3xl mx-auto">{pageContent.services.subheading}</p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        {pageContent.services.items.map(service => (
-          <div class="card p-8 flex hover-lift">
-            <!-- Service Icon (placeholder) -->
-            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mr-4 flex-shrink-0">
-              {service.icon === "consulting" && (
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              )}
-              {service.icon === "web" && (
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div class="grid md:grid-cols-3 gap-8">
+        {pageContent.services.items.map((service: Feature) => (
+          <div class="bg-card p-6 rounded-lg shadow-md">
+            <div class="w-12 h-12 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-4">
+              {service.icon === 'consulting' && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               )}
-              {service.icon === "mobile" && (
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {service.icon === 'web' && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              )}
+              {service.icon === 'mobile' && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
               )}
-              {service.icon === "cloud" && (
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {service.icon === 'cloud' && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                 </svg>
               )}
+              {service.icon === 'interviewer' && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              )}
+              {service.icon === 'training' && (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              )}
             </div>
-            
-            <div>
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">{service.title}</h3>
-              <p class="text-slate-600 dark:text-slate-400">{service.description}</p>
-            </div>
+            <h3 class="text-xl font-semibold mb-2">{service.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300">{service.description}</p>
           </div>
         ))}
       </div>
       
-      <div class="text-center">
-        <a href="/services" class="btn btn-primary">
-          {pageContent.services.cta}
-        </a>
+      <div class="text-center mt-12">
+        <a href="/services" class="btn btn-primary">{pageContent.services.cta}</a>
       </div>
     </div>
   </section>
-  
+
+  <!-- Examples Section -->
+  <section class="py-16 bg-primary-50 dark:bg-primary-900/20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">{currentLang === 'en' ? 'Real-World Examples' : 'Ejemplos Reales'}</h2>
+      <p class="text-xl text-center mb-12 max-w-3xl mx-auto">
+        {currentLang === 'en' 
+          ? 'Discover how our services can transform your business with these practical examples' 
+          : 'Descubre cómo nuestros servicios pueden transformar tu negocio con estos ejemplos prácticos'}
+      </p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Example 1: WhatsApp Bot -->
+        <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{currentLang === 'en' ? 'WhatsApp Business Bot' : 'Bot de WhatsApp Business'}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            {currentLang === 'en' 
+              ? 'Automated customer service that handles inquiries, appointments, and provides instant responses 24/7.' 
+              : 'Servicio al cliente automatizado que maneja consultas, citas y proporciona respuestas instantáneas 24/7.'}
+          </p>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            {currentLang === 'en' ? 'Mobile Development' : 'Desarrollo Móvil'}
+          </div>
+        </div>
+
+        <!-- Example 2: Local Shop Website -->
+        <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{currentLang === 'en' ? 'Local Business Website' : 'Sitio Web para Negocios Locales'}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            {currentLang === 'en' 
+              ? 'Professional websites with online ordering, inventory management, and customer reviews for local businesses.' 
+              : 'Sitios web profesionales con pedidos en línea, gestión de inventario y reseñas de clientes para negocios locales.'}
+          </p>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+            {currentLang === 'en' ? 'Web Development' : 'Desarrollo Web'}
+          </div>
+        </div>
+
+        <!-- Example 3: Mobile App -->
+        <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{currentLang === 'en' ? 'Cross-Platform Mobile App' : 'Aplicación Móvil Multiplataforma'}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            {currentLang === 'en' 
+              ? 'Native and hybrid applications that work seamlessly across iOS and Android with a consistent user experience.' 
+              : 'Aplicaciones nativas e híbridas que funcionan perfectamente en iOS y Android con una experiencia de usuario consistente.'}
+          </p>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            {currentLang === 'en' ? 'Mobile Development' : 'Desarrollo Móvil'}
+          </div>
+        </div>
+
+        <!-- Example 4: Data Analytics Dashboard -->
+        <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{currentLang === 'en' ? 'Business Intelligence Dashboard' : 'Panel de Inteligencia de Negocios'}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            {currentLang === 'en' 
+              ? 'Interactive dashboards and reports that transform raw data into actionable insights for better decision-making.' 
+              : 'Paneles interactivos e informes que transforman datos brutos en información accionable para una mejor toma de decisiones.'}
+          </p>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            {currentLang === 'en' ? 'Data Analysis' : 'Análisis de Datos'}
+          </div>
+        </div>
+
+        <!-- Example 5: System Migration -->
+        <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{currentLang === 'en' ? 'Legacy System Modernization' : 'Modernización de Sistemas Legacy'}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            {currentLang === 'en' 
+              ? 'Seamless migration of outdated systems to modern platforms with minimal disruption to business operations.' 
+              : 'Migración sin problemas de sistemas obsoletos a plataformas modernas con mínima interrupción de las operaciones comerciales.'}
+          </p>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+            {currentLang === 'en' ? 'System Migration' : 'Migración de Sistemas'}
+          </div>
+        </div>
+
+        <!-- Example 6: DevOps Implementation -->
+        <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
+          <div class="w-12 h-12 bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">{currentLang === 'en' ? 'DevOps & CI/CD Implementation' : 'Implementación de DevOps y CI/CD'}</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            {currentLang === 'en' 
+              ? 'Automated deployment pipelines, infrastructure as code, and best practices to accelerate development cycles.' 
+              : 'Tuberías de despliegue automatizadas, infraestructura como código y mejores prácticas para acelerar los ciclos de desarrollo.'}
+          </p>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            {currentLang === 'en' ? 'DevOps' : 'DevOps'}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Call to Action Section -->
   <section class="bg-gradient-primary text-white py-20">
     <div class="container-padded text-center">
@@ -330,30 +489,119 @@ const pageContent = content[currentLang];
         <a href="#contact-form" class="btn bg-white text-blue-600 hover:bg-gray-100 focus:ring-white">
           {pageContent.cta.primary}
         </a>
-        <a href="/about" class="btn btn-outline border-white/30 text-white hover:bg-white/10 focus:ring-white">
+        <a href="/about" class="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border border-white/30 text-white hover:bg-white/10 focus:ring-white">
           {pageContent.cta.secondary}
         </a>
       </div>
     </div>
   </section>
   
-  <!-- Placeholder for Contact Form (will be implemented later) -->
+  <!-- Contact Form Section -->
   <section id="contact-form" class="section bg-white dark:bg-slate-900">
-    <div class="container-padded text-center">
-      <h2 class="heading-3 mb-4">
-        {currentLang === "es" ? "Formulario de Contacto" : "Contact Form"}
-      </h2>
-      <p class="text-slate-600 dark:text-slate-400 mb-8">
-        {currentLang === "es" 
-          ? "El formulario de contacto estará disponible próximamente." 
-          : "The contact form will be available soon."}
-      </p>
-      <div class="p-8 border border-dashed border-slate-300 dark:border-slate-700 rounded-lg">
-        <p class="text-blue-600 dark:text-blue-400">
+    <div class="container-padded">
+      <div class="text-center mb-12">
+        <h2 class="heading-3 mb-4" id="contact-form-title">
+          {currentLang === "es" ? "Formulario de Contacto" : "Contact Form"}
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto" id="contact-form-description">
           {currentLang === "es" 
-            ? "Estamos trabajando en esta función." 
-            : "We're working on this feature."}
+            ? "¿Tienes alguna pregunta o proyecto en mente? Estamos aquí para ayudarte." 
+            : "Have a question or project in mind? We're here to help."}
         </p>
+      </div>
+      
+      <div class="max-w-2xl mx-auto">
+        <form 
+          action="https://formspree.io/f/your-formspree-id" 
+          method="POST" 
+          class="space-y-6"
+          id="index-contact-form"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="name-label">
+                {currentLang === "es" ? "Nombre" : "Name"}
+              </label>
+              <input 
+                type="text" 
+                name="name" 
+                id="name" 
+                required
+                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+                placeholder={currentLang === "es" ? "Tu nombre completo" : "Your full name"}
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="email-label">
+                {currentLang === "es" ? "Email" : "Email"}
+              </label>
+              <input 
+                type="email" 
+                name="email" 
+                id="email" 
+                required
+                class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+                placeholder={currentLang === "es" ? "tu@email.com" : "your@email.com"}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="subject-label">
+              {currentLang === "es" ? "Asunto" : "Subject"}
+            </label>
+            <select 
+              name="subject" 
+              id="subject" 
+              required
+              class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+            >
+              <option value="" disabled selected id="subject-placeholder">
+                {currentLang === "es" ? "Selecciona un asunto" : "Select a subject"}
+              </option>
+              <option value="consultoria" id="subject-consulting">
+                {currentLang === "es" ? "Consultoría" : "Consulting"}
+              </option>
+              <option value="desarrollo" id="subject-development">
+                {currentLang === "es" ? "Desarrollo de Software" : "Software Development"}
+              </option>
+              <option value="capacitacion" id="subject-training">
+                {currentLang === "es" ? "Capacitación" : "Training"}
+              </option>
+              <option value="evaluacion" id="subject-evaluation">
+                {currentLang === "es" ? "Evaluación de Candidatos" : "Candidate Evaluation"}
+              </option>
+              <option value="otro" id="subject-other">
+                {currentLang === "es" ? "Otro" : "Other"}
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="message-label">
+              {currentLang === "es" ? "Mensaje" : "Message"}
+            </label>
+            <textarea 
+              name="message" 
+              id="message" 
+              rows="5" 
+              required
+              class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+              placeholder={currentLang === "es" ? "Describe tu consulta o proyecto" : "Describe your inquiry or project"}
+            ></textarea>
+          </div>
+
+          <div>
+            <button 
+              type="submit" 
+              class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              id="submit-button"
+            >
+              {currentLang === "es" ? "Enviar Mensaje" : "Send Message"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -363,3 +611,97 @@ const pageContent = content[currentLang];
     <VisitCounter />
   </div>
 </MainLayout>
+
+<script>
+  // Define types for our translations
+  type Language = 'en' | 'es';
+  type TranslationKey = string;
+  type Translations = {
+    [K in Language]: {
+      [key: string]: string;
+    };
+  };
+
+  // Check if language is stored in localStorage
+  const storedLanguage = (localStorage.getItem('language') || 'es') as Language;
+  
+  // Define translations for the contact form
+  const translations: Translations = {
+    en: {
+      'contact-form-title': 'Contact Form',
+      'contact-form-description': 'Have a question or project in mind? We\'re here to help.',
+      'name-label': 'Name',
+      'email-label': 'Email',
+      'subject-label': 'Subject',
+      'message-label': 'Message',
+      'submit-button': 'Send Message',
+      'subject-placeholder': 'Select a subject',
+      'subject-consulting': 'Consulting',
+      'subject-development': 'Software Development',
+      'subject-training': 'Training',
+      'subject-evaluation': 'Candidate Evaluation',
+      'subject-other': 'Other'
+    },
+    es: {
+      'contact-form-title': 'Formulario de Contacto',
+      'contact-form-description': '¿Tienes alguna pregunta o proyecto en mente? Estamos aquí para ayudarte.',
+      'name-label': 'Nombre',
+      'email-label': 'Email',
+      'subject-label': 'Asunto',
+      'message-label': 'Mensaje',
+      'submit-button': 'Enviar Mensaje',
+      'subject-placeholder': 'Selecciona un asunto',
+      'subject-consulting': 'Consultoría',
+      'subject-development': 'Desarrollo de Software',
+      'subject-training': 'Capacitación',
+      'subject-evaluation': 'Evaluación de Candidatos',
+      'subject-other': 'Otro'
+    }
+  };
+  
+  // Function to update text content based on language
+  function updateLanguage(lang: Language) {
+    const elements = document.querySelectorAll('[id]');
+    elements.forEach(element => {
+      const id = element.getAttribute('id');
+      if (id && translations[lang] && id in translations[lang]) {
+        element.textContent = translations[lang][id];
+      }
+    });
+  }
+  
+  // Update language on page load
+  updateLanguage(storedLanguage);
+  
+  // Define the custom event type
+  interface LanguageChangeEvent extends CustomEvent {
+    detail: {
+      language: Language;
+    };
+  }
+  
+  // Listen for language changes
+  document.addEventListener('languageChanged', ((e: Event) => {
+    // Type assertion to access the detail property
+    const customEvent = e as LanguageChangeEvent;
+    if (customEvent.detail?.language) {
+      updateLanguage(customEvent.detail.language);
+    }
+  }) as EventListener);
+
+  // Form submission handling
+  const contactForm = document.getElementById('index-contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      // You can add form validation or other handling here
+      // For example, showing a loading state or disabling the submit button
+      
+      const submitButton = document.getElementById('submit-button');
+      if (submitButton) {
+        // Type assertion to access the disabled property
+        (submitButton as HTMLButtonElement).disabled = true;
+        submitButton.textContent = storedLanguage === 'es' ? 'Enviando...' : 'Sending...';
+      }
+    });
+  }
+</script>

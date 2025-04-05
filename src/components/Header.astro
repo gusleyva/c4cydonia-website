@@ -28,76 +28,173 @@ const navItems = {
 const currentLang = "es";
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-gray-900/80">
-  <nav class="container mx-auto flex h-16 items-center justify-between px-4">
-    <div class="flex items-center gap-2">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/images/logo.svg" alt="C4Cydonia Logo" class="h-8 w-8 rounded-full" />
-        <span class="text-xl font-bold">C4Cydonia</span>
-      </a>
-    </div>
-
-    <div class="hidden md:flex md:items-center md:gap-6">
-      {navItems[currentLang].map((item) => (
-        <a
-          href={item.href}
-          class="text-sm font-medium text-gray-700 transition-colors hover:text-primary-600 dark:text-gray-200 dark:hover:text-primary-400"
-        >
-          {item.text}
+<header class="bg-white dark:bg-gray-900 shadow-sm">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <a href="/" class="flex items-center gap-2">
+          <img src="/images/logo.svg" alt="C4Cydonia Logo" class="h-8 w-8 rounded-full" />
+          <span class="text-xl font-bold text-gray-900 dark:text-white">C4Cydonia</span>
         </a>
-      ))}
-    </div>
-
-    <div class="flex items-center gap-4">
-      <LanguageToggle />
-      <ThemeToggle />
+      </div>
       
-      <button
-        type="button"
-        class="md:hidden"
-        aria-label="Toggle menu"
-        id="menu-button"
-      >
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Mobile menu -->
-  <div
-    class="hidden md:hidden"
-    id="mobile-menu"
-  >
-    <div class="space-y-1 px-4 pb-3 pt-2">
-      {navItems[currentLang].map((item) => (
-        <a
-          href={item.href}
-          class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-600 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-primary-400"
-        >
-          {item.text}
+      <nav class="hidden md:flex space-x-8">
+        <a href="/" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+          Inicio
         </a>
-      ))}
+        <a href="/about" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+          Sobre Nosotros
+        </a>
+        <a href="/services" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+          Servicios
+        </a>
+        <a href="/blog" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+          Blog
+        </a>
+        <a href="/contact" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+          Contacto
+        </a>
+      </nav>
+      
+      <div class="flex items-center space-x-4">
+        <LanguageToggle />
+        <ThemeToggle />
+        
+        <!-- Mobile menu button -->
+        <button 
+          type="button" 
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+          aria-controls="mobile-menu" 
+          aria-expanded="false"
+          id="mobile-menu-button"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile menu, show/hide based on menu state -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800">
+        Inicio
+      </a>
+      <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800">
+        Sobre Nosotros
+      </a>
+      <a href="/services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800">
+        Servicios
+      </a>
+      <a href="/blog" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800">
+        Blog
+      </a>
+      <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-800">
+        Contacto
+      </a>
     </div>
   </div>
 </header>
 
 <script>
-  const menuButton = document.getElementById('menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
+  // Define types for our navigation items
+  type Language = 'en' | 'es';
+  type NavItems = {
+    [K in Language]: {
+      [key: string]: string;
+    };
+  };
 
-  menuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcons = mobileMenuButton?.querySelectorAll('svg');
+  
+  if (mobileMenuButton && mobileMenu && menuIcons) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+      
+      // Toggle menu visibility
+      mobileMenu.classList.toggle('hidden');
+      
+      // Toggle aria-expanded attribute
+      mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+      
+      // Toggle menu icons
+      menuIcons[0].classList.toggle('hidden');
+      menuIcons[1].classList.toggle('hidden');
+    });
+  }
+  
+  // Update navigation text based on language
+  function updateNavLanguage(lang: Language) {
+    const navItems: NavItems = {
+      en: {
+        'Inicio': 'Home',
+        'Sobre Nosotros': 'About Us',
+        'Servicios': 'Services',
+        'Blog': 'Blog',
+        'Contacto': 'Contact'
+      },
+      es: {
+        'Home': 'Inicio',
+        'About Us': 'Sobre Nosotros',
+        'Services': 'Servicios',
+        'Blog': 'Blog',
+        'Contact': 'Contacto'
+      }
+    };
+    
+    // Update desktop navigation
+    const desktopNav = document.querySelector('nav.md\\:flex');
+    if (desktopNav) {
+      const links = desktopNav.querySelectorAll('a');
+      links.forEach(link => {
+        const currentText = link.textContent?.trim();
+        if (currentText && currentText in navItems[lang]) {
+          link.textContent = navItems[lang][currentText];
+        }
+      });
+    }
+    
+    // Update mobile navigation
+    const mobileNav = document.getElementById('mobile-menu');
+    if (mobileNav) {
+      const links = mobileNav.querySelectorAll('a');
+      links.forEach(link => {
+        const currentText = link.textContent?.trim();
+        if (currentText && currentText in navItems[lang]) {
+          link.textContent = navItems[lang][currentText];
+        }
+      });
+    }
+  }
+  
+  // Get current language from localStorage
+  const storedLanguage = (localStorage.getItem('language') || 'es') as Language;
+  
+  // Update navigation on page load
+  updateNavLanguage(storedLanguage);
+  
+  // Define the custom event type
+  interface LanguageChangeEvent extends CustomEvent {
+    detail: {
+      language: Language;
+    };
+  }
+  
+  // Listen for language changes
+  document.addEventListener('languageChanged', ((e: Event) => {
+    // Type assertion to access the detail property
+    const customEvent = e as LanguageChangeEvent;
+    if (customEvent.detail?.language) {
+      updateNavLanguage(customEvent.detail.language);
+    }
+  }) as EventListener);
 </script>

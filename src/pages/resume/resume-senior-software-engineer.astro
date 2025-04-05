@@ -1,0 +1,435 @@
+---
+import { Image } from 'astro:assets';
+
+interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  location: string;
+  achievements: string[];
+}
+
+interface Skill {
+  category: string;
+  items: string[];
+}
+
+interface Education {
+  degree: string;
+  institution: string;
+  period: string;
+  location: string;
+}
+
+interface Language {
+  language: string;
+  level: string;
+}
+
+interface ResumeContent {
+  meta: {
+    title: string;
+    description: string;
+  };
+  personal: {
+    title: string;
+    location: string;
+    email: string;
+    portfolio: string;
+  };
+  summary: {
+    title: string;
+    content: string;
+  };
+  experience: {
+    title: string;
+  };
+  skills: {
+    title: string;
+  };
+  education: {
+    title: string;
+  };
+  certifications: {
+    title: string;
+  };
+  languages: {
+    title: string;
+  };
+}
+
+interface ContentMap {
+  [key: string]: ResumeContent;
+}
+
+const content: ContentMap = {
+  en: {
+    meta: {
+      title: "Senior Software Engineer Resume | C4Cydonia",
+      description: "Professional resume of a Senior Software Engineer with over 10 years of experience"
+    },
+    personal: {
+      title: "Senior Software Engineer",
+      location: "Location: Mexico City (Remote Available)",
+      email: "Email: contact@c4cydonia.com",
+      portfolio: "Portfolio: https://c4cydonia.com"
+    },
+    summary: {
+      title: "Professional Summary",
+      content: "Senior Software Engineer with over 10 years of experience in full-stack development, specializing in building scalable web applications and microservices. Proven track record of leading technical teams, mentoring developers, and delivering high-quality solutions. Strong expertise in modern JavaScript frameworks, cloud technologies, and agile methodologies."
+    },
+    experience: {
+      title: "Professional Experience"
+    },
+    skills: {
+      title: "Technical Skills"
+    },
+    education: {
+      title: "Education"
+    },
+    certifications: {
+      title: "Certifications"
+    },
+    languages: {
+      title: "Languages"
+    }
+  },
+  es: {
+    meta: {
+      title: "Currículum de Ingeniero de Software Senior | C4Cydonia",
+      description: "Currículum profesional de un Ingeniero de Software Senior con más de 10 años de experiencia"
+    },
+    personal: {
+      title: "Ingeniero de Software Senior",
+      location: "Ubicación: Ciudad de México (Disponible Remoto)",
+      email: "Correo: contact@c4cydonia.com",
+      portfolio: "Portafolio: https://c4cydonia.com"
+    },
+    summary: {
+      title: "Resumen Profesional",
+      content: "Ingeniero de Software Senior con más de 10 años de experiencia en desarrollo full-stack, especializado en la construcción de aplicaciones web escalables y microservicios. Historial comprobado liderando equipos técnicos, mentorando desarrolladores y entregando soluciones de alta calidad. Fuerte experiencia en frameworks modernos de JavaScript, tecnologías en la nube y metodologías ágiles."
+    },
+    experience: {
+      title: "Experiencia Profesional"
+    },
+    skills: {
+      title: "Habilidades Técnicas"
+    },
+    education: {
+      title: "Educación"
+    },
+    certifications: {
+      title: "Certificaciones"
+    },
+    languages: {
+      title: "Idiomas"
+    }
+  }
+};
+
+const experiences: Record<string, Experience[]> = {
+  en: [
+    {
+      title: "Senior Software Engineer",
+      company: "C4Cydonia",
+      period: "2020 - Present",
+      location: "Remote",
+      achievements: [
+        "Led development of enterprise-scale applications using React, Node.js, and TypeScript",
+        "Architected and implemented microservices infrastructure serving millions of requests",
+        "Mentored junior developers and established best practices for code quality",
+        "Implemented CI/CD pipelines reducing deployment time by 60%"
+      ]
+    },
+    {
+      title: "Software Engineer",
+      company: "Previous Company",
+      period: "2016 - 2020",
+      location: "Mexico City",
+      achievements: [
+        "Developed and maintained multiple full-stack applications",
+        "Improved application performance by 40% through optimization",
+        "Led team of 5 developers in Agile environment",
+        "Implemented automated testing increasing code coverage to 85%"
+      ]
+    }
+  ],
+  es: [
+    {
+      title: "Ingeniero de Software Senior",
+      company: "C4Cydonia",
+      period: "2020 - Presente",
+      location: "Remoto",
+      achievements: [
+        "Lideré el desarrollo de aplicaciones empresariales usando React, Node.js y TypeScript",
+        "Arquitecturé e implementé infraestructura de microservicios atendiendo millones de solicitudes",
+        "Mentoricé a desarrolladores junior y establecí mejores prácticas para la calidad del código",
+        "Implementé pipelines de CI/CD reduciendo el tiempo de despliegue en un 60%"
+      ]
+    },
+    {
+      title: "Ingeniero de Software",
+      company: "Empresa Anterior",
+      period: "2016 - 2020",
+      location: "Ciudad de México",
+      achievements: [
+        "Desarrollé y mantuve múltiples aplicaciones full-stack",
+        "Mejoré el rendimiento de la aplicación en un 40% mediante optimización",
+        "Lideré un equipo de 5 desarrolladores en un entorno Ágil",
+        "Implementé pruebas automatizadas aumentando la cobertura de código al 85%"
+      ]
+    }
+  ]
+};
+
+const skills: Record<string, Skill[]> = {
+  en: [
+    {
+      category: "Programming Languages",
+      items: ["JavaScript", "TypeScript", "Python", "Java", "SQL"]
+    },
+    {
+      category: "Frontend",
+      items: ["React", "Vue.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS"]
+    },
+    {
+      category: "Backend",
+      items: ["Node.js", "Express", "Django", "Spring Boot"]
+    },
+    {
+      category: "Cloud & DevOps",
+      items: ["AWS", "Docker", "Kubernetes", "CI/CD", "Git"]
+    },
+    {
+      category: "Databases",
+      items: ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch"]
+    }
+  ],
+  es: [
+    {
+      category: "Lenguajes de Programación",
+      items: ["JavaScript", "TypeScript", "Python", "Java", "SQL"]
+    },
+    {
+      category: "Frontend",
+      items: ["React", "Vue.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS"]
+    },
+    {
+      category: "Backend",
+      items: ["Node.js", "Express", "Django", "Spring Boot"]
+    },
+    {
+      category: "Nube y DevOps",
+      items: ["AWS", "Docker", "Kubernetes", "CI/CD", "Git"]
+    },
+    {
+      category: "Bases de Datos",
+      items: ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch"]
+    }
+  ]
+};
+
+const education: Record<string, Education[]> = {
+  en: [
+    {
+      degree: "Bachelor of Science in Computer Science",
+      institution: "University Name",
+      period: "2010 - 2014",
+      location: "Mexico City"
+    }
+  ],
+  es: [
+    {
+      degree: "Licenciatura en Ciencias de la Computación",
+      institution: "Nombre de la Universidad",
+      period: "2010 - 2014",
+      location: "Ciudad de México"
+    }
+  ]
+};
+
+const certifications: Record<string, string[]> = {
+  en: [
+    "AWS Certified Solutions Architect",
+    "Professional Scrum Master I",
+    "MongoDB Certified Developer"
+  ],
+  es: [
+    "Arquitecto de Soluciones Certificado AWS",
+    "Scrum Master Profesional I",
+    "Desarrollador Certificado MongoDB"
+  ]
+};
+
+const languages: Record<string, Language[]> = {
+  en: [
+    { language: "Spanish", level: "Native" },
+    { language: "English", level: "Professional" }
+  ],
+  es: [
+    { language: "Español", level: "Nativo" },
+    { language: "Inglés", level: "Profesional" }
+  ]
+};
+
+const currentLang = Astro.currentLocale || 'en';
+const t = content[currentLang];
+const currentExperiences = experiences[currentLang];
+const currentSkills = skills[currentLang];
+const currentEducation = education[currentLang];
+const currentCertifications = certifications[currentLang];
+const currentLanguages = languages[currentLang];
+---
+
+<!DOCTYPE html>
+<html lang={currentLang}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{t.meta.title}</title>
+  <meta name="description" content={t.meta.description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-screen">
+  <!-- Header with Logo and Language Toggle -->
+  <header class="py-4 px-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+    <a href="/" class="inline-block">
+      <img src="/images/logo.svg" alt="C4Cydonia Logo" class="h-8" />
+    </a>
+    <div class="flex items-center space-x-2">
+      <a href="?lang=es" class={`px-3 py-1 rounded-md text-sm ${currentLang === 'es' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>ES</a>
+      <a href="?lang=en" class={`px-3 py-1 rounded-md text-sm ${currentLang === 'en' ? 'bg-primary-600 text-white' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'}`}>EN</a>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Personal Information -->
+    <section class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">{t.personal.title}</h1>
+      <div class="text-gray-600 dark:text-gray-400">
+        <p class="mb-1">{t.personal.location}</p>
+        <p class="mb-1">{t.personal.email}</p>
+        <p>{t.personal.portfolio}</p>
+      </div>
+    </section>
+
+    <!-- Professional Summary -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{t.summary.title}</h2>
+      <p class="text-gray-600 dark:text-gray-400">
+        {t.summary.content}
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{t.experience.title}</h2>
+      {currentExperiences.map(exp => (
+        <div class="mb-6">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{exp.title}</h3>
+          <div class="text-primary-600 dark:text-primary-400 mb-2">
+            {exp.company} | {exp.period} | {exp.location}
+          </div>
+          <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+            {exp.achievements.map(achievement => (
+              <li class="mb-1">{achievement}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <!-- Skills -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{t.skills.title}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {currentSkills.map(skill => (
+          <div class="mb-4">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">{skill.category}</h3>
+            <div class="flex flex-wrap gap-2">
+              {skill.items.map(item => (
+                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{t.education.title}</h2>
+      {currentEducation.map(edu => (
+        <div class="mb-4">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">{edu.degree}</h3>
+          <div class="text-primary-600 dark:text-primary-400">
+            {edu.institution} | {edu.period} | {edu.location}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Certifications -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{t.certifications.title}</h2>
+      <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+        {currentCertifications.map(cert => (
+          <li class="mb-1">{cert}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Languages -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{t.languages.title}</h2>
+      <div class="flex gap-4">
+        {currentLanguages.map(lang => (
+          <div class="text-gray-600 dark:text-gray-400">
+            <span class="font-semibold">{lang.language}:</span> {lang.level}
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <!-- Print Styles -->
+  <style is:global>
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      
+      header {
+        border-bottom: 1px solid #ddd !important;
+      }
+
+      h1, h2, h3 {
+        color: black !important;
+      }
+
+      p, li, span {
+        color: #333 !important;
+      }
+
+      .dark\:bg-gray-800,
+      .dark\:bg-gray-900 {
+        background-color: white !important;
+      }
+
+      .dark\:text-white,
+      .dark\:text-gray-200,
+      .dark\:text-gray-300,
+      .dark\:text-gray-400 {
+        color: #333 !important;
+      }
+
+      .dark\:border-gray-700 {
+        border-color: #ddd !important;
+      }
+    }
+  </style>
+</body>
+</html> 

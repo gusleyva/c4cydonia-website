@@ -1,0 +1,339 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout 
+  title="Contacto | C4Cydonia" 
+  description="Ponte en contacto con C4Cydonia para consultas sobre desarrollo de software y consultoría tecnológica."
+>
+  <div class="bg-white dark:bg-gray-900 py-16 sm:py-24">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl">
+        <div class="text-center mb-12">
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-6" id="contact-title">
+            Contacto
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" id="contact-description">
+            ¿Tienes alguna pregunta o proyecto en mente? Estamos aquí para ayudarte.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Contact Information -->
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6" id="contact-info-title">
+              Información de Contacto
+            </h2>
+            
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+                    Email
+                  </h3>
+                  <p class="mt-1 text-gray-600 dark:text-gray-400">
+                    <a href="mailto:gustavo.leyva@c4cydonia.com" class="hover:text-primary-600 dark:hover:text-primary-400">
+                      gustavo.leyva@c4cydonia.com
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white" id="location-title">
+                    Ubicación
+                  </h3>
+                  <p class="mt-1 text-gray-600 dark:text-gray-400" id="location-value">
+                    Navojoa, Sonora, México
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white" id="phone-title">
+                    Teléfono
+                  </h3>
+                  <p class="mt-1 text-gray-600 dark:text-gray-400" id="phone-value">
+                    +52-6421-52-21-43
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white" id="hours-title">
+                    Horario de Atención
+                  </h3>
+                  <p class="mt-1 text-gray-600 dark:text-gray-400" id="hours-value">
+                    Lunes a Viernes: 9:00 - 18:00
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4" id="follow-us-title">
+                Síguenos
+              </h3>
+              <div class="flex space-x-4">
+                <a href="#" class="text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+                  <span class="sr-only">LinkedIn</span>
+                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+                  <span class="sr-only">GitHub</span>
+                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400">
+                  <span class="sr-only">YouTube</span>
+                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6" id="form-title">
+              Envíanos un Mensaje
+            </h2>
+            
+            <form 
+              action="https://formspree.io/f/your-formspree-id" 
+              method="POST" 
+              class="space-y-6"
+              id="contact-form"
+            >
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="name-label">
+                  Nombre
+                </label>
+                <input 
+                  type="text" 
+                  name="name" 
+                  id="name" 
+                  required
+                  class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+                  placeholder="Tu nombre completo"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="email-label">
+                  Email
+                </label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="email" 
+                  required
+                  class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+                  placeholder="tu@email.com"
+                />
+              </div>
+
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="phone-label">
+                  Teléfono
+                </label>
+                <input 
+                  type="tel" 
+                  name="phone" 
+                  id="phone" 
+                  class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+                  placeholder="+52-XXX-XXX-XXXX"
+                />
+              </div>
+
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="subject-label">
+                  Asunto
+                </label>
+                <select 
+                  name="subject" 
+                  id="subject" 
+                  required
+                  class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+                >
+                  <option value="" disabled selected id="subject-placeholder">Selecciona un asunto</option>
+                  <option value="consultoria" id="subject-consulting">Consultoría</option>
+                  <option value="desarrollo" id="subject-development">Desarrollo de Software</option>
+                  <option value="capacitacion" id="subject-training">Capacitación</option>
+                  <option value="evaluacion" id="subject-evaluation">Evaluación de Candidatos</option>
+                  <option value="otro" id="subject-other">Otro</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300" id="message-label">
+                  Mensaje
+                </label>
+                <textarea 
+                  name="message" 
+                  id="message" 
+                  rows="5" 
+                  required
+                  class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-800 dark:text-white sm:text-sm"
+                  placeholder="Describe tu consulta o proyecto"
+                ></textarea>
+              </div>
+
+              <div>
+                <button 
+                  type="submit" 
+                  class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                  id="submit-button"
+                >
+                  Enviar Mensaje
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Define types for our translations
+    type Language = 'en' | 'es';
+    type TranslationKey = string;
+    type Translations = {
+      [K in Language]: {
+        [key: string]: string;
+      };
+    };
+
+    // Check if language is stored in localStorage
+    const storedLanguage = (localStorage.getItem('language') || 'es') as Language;
+    
+    // Define translations
+    const translations: Translations = {
+      en: {
+        'contact-title': 'Contact Us',
+        'contact-description': 'Have a question or project in mind? We\'re here to help.',
+        'contact-info-title': 'Contact Information',
+        'location-title': 'Location',
+        'location-value': 'Navojoa, Sonora, Mexico',
+        'phone-title': 'Phone',
+        'phone-value': '+52-6421-52-21-43',
+        'hours-title': 'Business Hours',
+        'hours-value': 'Monday to Friday: 9:00 AM - 6:00 PM',
+        'follow-us-title': 'Follow Us',
+        'form-title': 'Send Us a Message',
+        'name-label': 'Name',
+        'email-label': 'Email',
+        'phone-label': 'Phone',
+        'subject-label': 'Subject',
+        'message-label': 'Message',
+        'submit-button': 'Send Message',
+        'subject-placeholder': 'Select a subject',
+        'subject-consulting': 'Consulting',
+        'subject-development': 'Software Development',
+        'subject-training': 'Training',
+        'subject-evaluation': 'Candidate Evaluation',
+        'subject-other': 'Other'
+      },
+      es: {
+        'contact-title': 'Contacto',
+        'contact-description': '¿Tienes alguna pregunta o proyecto en mente? Estamos aquí para ayudarte.',
+        'contact-info-title': 'Información de Contacto',
+        'location-title': 'Ubicación',
+        'location-value': 'Navojoa, Sonora, México',
+        'phone-title': 'Teléfono',
+        'phone-value': '+52-6421-52-21-43',
+        'hours-title': 'Horario de Atención',
+        'hours-value': 'Lunes a Viernes: 9:00 - 18:00',
+        'follow-us-title': 'Síguenos',
+        'form-title': 'Envíanos un Mensaje',
+        'name-label': 'Nombre',
+        'email-label': 'Email',
+        'phone-label': 'Teléfono',
+        'subject-label': 'Asunto',
+        'message-label': 'Mensaje',
+        'submit-button': 'Enviar Mensaje',
+        'subject-placeholder': 'Selecciona un asunto',
+        'subject-consulting': 'Consultoría',
+        'subject-development': 'Desarrollo de Software',
+        'subject-training': 'Capacitación',
+        'subject-evaluation': 'Evaluación de Candidatos',
+        'subject-other': 'Otro'
+      }
+    };
+    
+    // Function to update text content based on language
+    function updateLanguage(lang: Language) {
+      const elements = document.querySelectorAll('[id]');
+      elements.forEach(element => {
+        const id = element.getAttribute('id');
+        if (id && translations[lang] && id in translations[lang]) {
+          element.textContent = translations[lang][id];
+        }
+      });
+    }
+    
+    // Update language on page load
+    updateLanguage(storedLanguage);
+    
+    // Define the custom event type
+    interface LanguageChangeEvent extends CustomEvent {
+      detail: {
+        language: Language;
+      };
+    }
+    
+    // Listen for language changes
+    document.addEventListener('languageChanged', ((e: Event) => {
+      // Type assertion to access the detail property
+      const customEvent = e as LanguageChangeEvent;
+      if (customEvent.detail?.language) {
+        updateLanguage(customEvent.detail.language);
+      }
+    }) as EventListener);
+
+    // Form submission handling
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        // You can add form validation or other handling here
+        // For example, showing a loading state or disabling the submit button
+        
+        const submitButton = document.getElementById('submit-button');
+        if (submitButton) {
+          // Type assertion to access the disabled property
+          (submitButton as HTMLButtonElement).disabled = true;
+          submitButton.textContent = storedLanguage === 'es' ? 'Enviando...' : 'Sending...';
+        }
+      });
+    }
+  </script>
+</MainLayout> 
