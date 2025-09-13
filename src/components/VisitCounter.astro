@@ -1,17 +1,5 @@
 ---
 // VisitCounter.astro
-interface Props {
-  lang?: 'es' | 'en';
-}
-
-const { lang = 'es' } = Astro.props;
-
-const translations = {
-  es: { visits: "Visitas totales:" },
-  en: { visits: "Total visits:" }
-};
-
-const t = translations[lang];
 ---
 
 <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
@@ -35,15 +23,5 @@ const t = translations[lang];
       d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
     />
   </svg>
-  <span id="visit-count">0</span>
-  <span>visitas</span>
+  <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fc4cydonia.com%2F&label=&icon=align-center&color=%23fff&message=&style=flat&tz=America%2FPhoenix"/>
 </div>
-
-<script>
-  const visitCount = document.getElementById('visit-count');
-  if (visitCount) {
-    const count = parseInt(localStorage.getItem('visitCount') || '0') + 1;
-    localStorage.setItem('visitCount', count.toString());
-    visitCount.textContent = count.toLocaleString();
-  }
-</script>

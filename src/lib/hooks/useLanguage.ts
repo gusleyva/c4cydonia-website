@@ -13,7 +13,7 @@ interface Translations {
 const translations: Translations = {
   // Navigation
   'nav.home': { en: 'Home', es: 'Inicio' },
-  'nav.about': { en: 'About', es: 'Sobre Nosotros' },
+  'nav.about': { en: 'About', es: 'Quienes Somos' },
   'nav.services': { en: 'Services', es: 'Servicios' },
   'nav.blog': { en: 'Blog', es: 'Blog' },
   'nav.contact': { en: 'Contact', es: 'Contacto' },
