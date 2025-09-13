@@ -1,5 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import VisitCounter from '../../components/VisitCounter.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 import { formatDate } from '../../lib/utils';
 
@@ -82,7 +83,7 @@ visitCount++;
               ← Volver al blog
             </a>
             <div class="text-sm text-gray-500 dark:text-gray-400">
-              Visitas: {visitCount}
+              <VisitCounter client:only="astro" />
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
+import VisitCounter from '../../components/VisitCounter.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 import { formatDate } from '../../lib/utils';
 
@@ -18,11 +19,6 @@ interface Props {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-// Increment visit counter
-// This is a simple implementation that will reset on server restart
-// For a production site, you'd want to use a database or analytics service
-let visitCount = 0;
-visitCount++;
 ---
 
 <MainLayout title={`${post.data.title} | C4Cydonia Blog Técnico`} description={post.data.description}>
@@ -117,7 +113,7 @@ visitCount++;
               ← Volver al blog técnico
             </a>
             <div class="text-sm text-gray-500 dark:text-gray-400">
-              Visitas: {visitCount}
+              <VisitCounter client:only="astro" />
             </div>
           </div>
         </div>
