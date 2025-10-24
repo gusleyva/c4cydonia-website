@@ -1,0 +1,124 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { formatDate } from '../../lib/utils';
+
+// Get latest posts from both blogs
+const companyPosts = await getCollection('blog-company');
+const technicalPosts = await getCollection('blog-technical');
+
+// Sort posts by date and get the latest 3 from each
+const latestCompanyPosts = companyPosts
+  .sort((a: CollectionEntry<'blog-company'>, b: CollectionEntry<'blog-company'>) => 
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  )
+  .slice(0, 3);
+
+const latestTechnicalPosts = technicalPosts
+  .sort((a: CollectionEntry<'blog-technical'>, b: CollectionEntry<'blog-technical'>) => 
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  )
+  .slice(0, 3);
+---
+
+<MainLayout 
+  title="Nuestros Blogs | C4Cydonia" 
+  description="Explora nuestros blogs de empresa y técnico para mantenerte al día con las últimas noticias y conocimientos técnicos."
+>
+  <div class="bg-white dark:bg-gray-900 py-16 sm:py-24">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-6">
+          Nuestros Blogs
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          Mantente al día con nuestras últimas noticias, actualizaciones y conocimientos técnicos.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Company Blog Section -->
+        <section>
+          <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              Blog de Empresa
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400">
+              Noticias, actualizaciones y reflexiones sobre nuestra empresa y el sector.
+            </p>
+          </div>
+
+          <div class="space-y-8">
+            {latestCompanyPosts.map((post: CollectionEntry<'blog-company'>) => (
+              <article class="group">
+                <a href={`/company-blog/${post.slug}`} class="block">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                    {post.data.title}
+                  </h3>
+                  <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400">
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                  {post.data.description && (
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">
+                      {post.data.description}
+                    </p>
+                  )}
+                </a>
+              </article>
+            ))}
+          </div>
+
+          <div class="mt-8">
+            <a 
+              href="/company-blog" 
+              class="text-primary-600 dark:text-primary-400 font-medium hover:underline"
+            >
+              Ver todos los posts del blog de empresa →
+            </a>
+          </div>
+        </section>
+
+        <!-- Technical Blog Section -->
+        <section>
+          <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              Blog Técnico
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400">
+              Artículos técnicos, tutoriales y guías sobre desarrollo de software.
+            </p>
+          </div>
+
+          <div class="space-y-8">
+            {latestTechnicalPosts.map((post: CollectionEntry<'blog-technical'>) => (
+              <article class="group">
+                <a href={`/technical-blog/${post.slug}`} class="block">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                    {post.data.title}
+                  </h3>
+                  <time datetime={post.data.pubDate.toISOString()} class="text-sm text-gray-500 dark:text-gray-400">
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                  {post.data.description && (
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">
+                      {post.data.description}
+                    </p>
+                  )}
+                </a>
+              </article>
+            ))}
+          </div>
+
+          <div class="mt-8">
+            <a 
+              href="/technical-blog" 
+              class="text-primary-600 dark:text-primary-400 font-medium hover:underline"
+            >
+              Ver todos los posts del blog técnico →
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</MainLayout> 

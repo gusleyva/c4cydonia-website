@@ -1,0 +1,92 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { formatDate } from '../../lib/utils';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post: CollectionEntry<'blog'>) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Increment visit counter
+// This is a simple implementation that will reset on server restart
+// For a production site, you'd want to use a database or analytics service
+let visitCount = 0;
+visitCount++;
+---
+
+<MainLayout title={`${post.data.title} | C4Cydonia Blog`} description={post.data.description}>
+  <article class="bg-white dark:bg-gray-900 py-16 sm:py-24">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl">
+        <header class="mb-10">
+          <div class="flex items-center gap-x-4 text-xs mb-4">
+            <time datetime={post.data.pubDate.toISOString()} class="text-gray-500 dark:text-gray-400">
+              {formatDate(post.data.pubDate)}
+            </time>
+            {post.data.author && (
+              <span class="text-gray-500 dark:text-gray-400">
+                Por {post.data.author}
+              </span>
+            )}
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="flex gap-2">
+                {post.data.tags.map((tag: string) => (
+                  <span class="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full text-xs">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-6">
+            {post.data.title}
+          </h1>
+          {post.data.description && (
+            <p class="text-xl text-gray-600 dark:text-gray-400">
+              {post.data.description}
+            </p>
+          )}
+        </header>
+
+        {post.data.image && (
+          <div class="mb-10 rounded-lg overflow-hidden">
+            <img 
+              src={post.data.image} 
+              alt={post.data.title} 
+              class="w-full h-auto"
+            />
+          </div>
+        )}
+
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+          <Content />
+        </div>
+
+        <div class="mt-10 pt-10 border-t border-gray-200 dark:border-gray-700">
+          <div class="flex justify-between items-center">
+            <a 
+              href="/blog" 
+              class="text-primary-600 dark:text-primary-400 font-medium hover:underline"
+            >
+              ← Volver al blog
+            </a>
+            <div class="text-sm text-gray-500 dark:text-gray-400">
+              Visitas: {visitCount}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</MainLayout> 
