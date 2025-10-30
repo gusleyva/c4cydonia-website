@@ -10,30 +10,33 @@
 </button>
 
 <script>
-  // Get the language toggle button and text elements
-  const languageToggle = document.getElementById('language-toggle');
-  const languageText = document.getElementById('language-text');
-  
-  // Get the current language from localStorage or default to Spanish
-  const currentLanguage = localStorage.getItem('language') || 'es';
-  
-  // Set initial text based on current language
-  languageText.textContent = currentLanguage === 'es' ? 'EN' : 'ES';
-  
-  // Add click event listener to toggle language
-  languageToggle.addEventListener('click', () => {
-    // Toggle between 'es' and 'en'
-    const newLanguage = currentLanguage === 'es' ? 'en' : 'es';
-    
-    // Update localStorage
+  type Language = 'es' | 'en';
+
+  const languageToggle = document.getElementById('language-toggle') as HTMLButtonElement | null;
+  const languageText = document.getElementById('language-text') as HTMLSpanElement | null;
+
+  // Read current language or default to 'es'
+  let currentLanguage: Language = (localStorage.getItem('language') as Language) || 'es';
+
+  // Initialize label
+  if (languageText) {
+    languageText.textContent = currentLanguage === 'es' ? 'EN' : 'ES';
+  }
+
+  languageToggle?.addEventListener('click', () => {
+    // Compute next language based on latest stored value
+    const stored = (localStorage.getItem('language') as Language) || currentLanguage;
+    const newLanguage: Language = stored === 'es' ? 'en' : 'es';
+
     localStorage.setItem('language', newLanguage);
-    
-    // Update button text
-    languageText.textContent = newLanguage === 'es' ? 'EN' : 'ES';
-    
-    // Dispatch custom event for other components to listen to
-    const event = new CustomEvent('languageChanged', { 
-      detail: { language: newLanguage } 
+    currentLanguage = newLanguage;
+
+    if (languageText) {
+      languageText.textContent = newLanguage === 'es' ? 'EN' : 'ES';
+    }
+
+    const event = new CustomEvent('languageChanged', {
+      detail: { language: newLanguage }
     });
     document.dispatchEvent(event);
   });
