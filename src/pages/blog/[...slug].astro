@@ -3,26 +3,26 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
 import { formatDate } from '../../lib/utils';
 
+// Este archivo era legado y apuntaba a una colección 'blog' inexistente.
+// Ahora genera páginas solo para 'blog-company'.
+// TODO: Borrar a futuro technical blog; si se reactiva, combinar ambas colecciones aquí.
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post: CollectionEntry<'blog'>) => ({
+  const company = await getCollection('blog-company');
+  // const technical = await getCollection('blog-technical'); // TODO: Borrar a futuro technical blog
+  // const posts = [...company, ...technical];
+  const posts = company;
+  return posts.map((post: CollectionEntry<'blog-company'>) => ({
     params: { slug: post.slug },
     props: { post },
   }));
 }
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'blog-company'>;
 }
 
-const { post } = Astro.props;
+const { post } = Astro.props as Props;
 const { Content } = await post.render();
-
-// Increment visit counter
-// This is a simple implementation that will reset on server restart
-// For a production site, you'd want to use a database or analytics service
-let visitCount = 0;
-visitCount++;
 ---
 
 <MainLayout title={`${post.data.title} | C4Cydonia Blog`} description={post.data.description}>
@@ -76,14 +76,11 @@ visitCount++;
         <div class="mt-10 pt-10 border-t border-gray-200 dark:border-gray-700">
           <div class="flex justify-between items-center">
             <a 
-              href="/blog" 
+              href="/company-blog" 
               class="text-primary-600 dark:text-primary-400 font-medium hover:underline"
             >
-              ← Volver al blog
+              ← Volver al blog de empresa
             </a>
-            <div class="text-sm text-gray-500 dark:text-gray-400">
-              Visitas: {visitCount}
-            </div>
           </div>
         </div>
       </div>
