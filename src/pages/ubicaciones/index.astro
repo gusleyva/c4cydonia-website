@@ -1,0 +1,291 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const seoTitle =
+    "Áreas de Servicio | C4Cydonia - Desarrollo de Software en México y Arizona";
+const seoDescription =
+    "C4Cydonia ofrece servicios de desarrollo de software, consultoría tecnológica y capacitación empresarial en Sonora, Sinaloa, Baja California y Arizona. Conoce nuestras ubicaciones.";
+const seoKeywords =
+    "áreas de servicio, desarrollo software México, consultoría tecnológica Sonora, servicios tecnológicos Arizona, desarrollo web Sinaloa, software Baja California";
+
+// Cities data
+const cities = [
+    {
+        name: "Navojoa",
+        region: "Sonora, México",
+        slug: "navojoa",
+        description: "Nuestra ubicación principal en el sur de Sonora",
+        isMain: true,
+    },
+    {
+        name: "Ciudad Obregón",
+        region: "Sonora, México",
+        slug: "ciudad-obregon",
+        description: "Centro comercial e industrial del sur de Sonora",
+    },
+    {
+        name: "Hermosillo",
+        region: "Sonora, México",
+        slug: "hermosillo",
+        description: "Capital del estado de Sonora",
+    },
+    {
+        name: "Nogales",
+        region: "Sonora, México",
+        slug: "nogales",
+        description: "Ciudad fronteriza con Arizona, USA",
+    },
+    {
+        name: "Tucson",
+        region: "Arizona, USA",
+        slug: "tucson",
+        description: "Segunda ciudad más grande de Arizona",
+    },
+    {
+        name: "Phoenix",
+        region: "Arizona, USA",
+        slug: "phoenix",
+        description: "Capital del estado de Arizona",
+    },
+    {
+        name: "Los Mochis",
+        region: "Sinaloa, México",
+        slug: "los-mochis",
+        description: "Importante ciudad del norte de Sinaloa",
+    },
+    {
+        name: "Culiacán",
+        region: "Sinaloa, México",
+        slug: "culiacan",
+        description: "Capital del estado de Sinaloa",
+    },
+    {
+        name: "Mazatlán",
+        region: "Sinaloa, México",
+        slug: "mazatlan",
+        description: "Puerto turístico e industrial de Sinaloa",
+    },
+    {
+        name: "Tijuana",
+        region: "Baja California, México",
+        slug: "tijuana",
+        description: "Ciudad fronteriza más transitada del mundo",
+    },
+    {
+        name: "Mexicali",
+        region: "Baja California, México",
+        slug: "mexicali",
+        description: "Capital del estado de Baja California",
+    },
+    {
+        name: "Ensenada",
+        region: "Baja California, México",
+        slug: "ensenada",
+        description: "Puerto del Pacífico en Baja California",
+    },
+];
+---
+
+<MainLayout
+    title={seoTitle}
+    description={seoDescription}
+    keywords={seoKeywords}
+>
+    <!-- Page Header -->
+    <section class="bg-primary-800 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Áreas de Servicio</h1>
+            <p class="text-xl max-w-3xl mx-auto">
+                Ofrecemos servicios de desarrollo de software y consultoría
+                tecnológica en el noroeste de México y suroeste de Estados
+                Unidos
+            </p>
+        </div>
+    </section>
+
+    <!-- Cities Grid -->
+    <section class="py-16 bg-surface">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">
+                        Ciudades que Servimos
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400">
+                        Presencia en 12 ciudades estratégicas de México y
+                        Estados Unidos
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {
+                        cities.map((city) => (
+                            <a
+                                href={`/ubicaciones/${city.slug}`}
+                                class="bg-card p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-transparent hover:border-primary-500"
+                            >
+                                <div class="flex items-start justify-between mb-3">
+                                    <h3 class="text-xl font-semibold">
+                                        {city.name}
+                                    </h3>
+                                    {city.isMain && (
+                                        <span class="bg-primary-600 text-white text-xs px-2 py-1 rounded">
+                                            Principal
+                                        </span>
+                                    )}
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                                    {city.region}
+                                </p>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    {city.description}
+                                </p>
+                                <div class="mt-4 text-primary-600 dark:text-primary-400 font-medium flex items-center">
+                                    Ver más
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-4 w-4 ml-1"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 5l7 7-7 7"
+                                        />
+                                    </svg>
+                                </div>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">
+                    Servicios Disponibles en Todas las Ubicaciones
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6 text-left">
+                    <div class="flex items-start">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-primary-600 mr-3 flex-shrink-0 mt-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold mb-1">
+                                Consultoría Tecnológica
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                Asesoramiento experto para su estrategia digital
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-primary-600 mr-3 flex-shrink-0 mt-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold mb-1">
+                                Desarrollo Web y Móvil
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                Aplicaciones modernas y escalables
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-primary-600 mr-3 flex-shrink-0 mt-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold mb-1">
+                                Evaluación de Candidatos
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                Selección de talento técnico especializado
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6 text-primary-600 mr-3 flex-shrink-0 mt-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold mb-1">
+                                Capacitación Empresarial
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                Formación técnica para equipos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-accent text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">
+                ¿Listo para comenzar su proyecto?
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Contáctenos para una consulta gratuita sobre sus necesidades
+                tecnológicas
+            </p>
+            <a
+                href="/contact"
+                class="btn bg-white text-accent hover:bg-gray-100 font-bold py-3 px-8 rounded-md transition duration-300"
+            >
+                Contactar Ahora
+            </a>
+        </div>
+    </section>
+</MainLayout>

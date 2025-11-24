@@ -1,0 +1,278 @@
+---
+// SEO Component - Centralized SEO management for all pages
+interface Props {
+    title: string;
+    description: string;
+    keywords?: string;
+    image?: string;
+    imageAlt?: string;
+    type?: "website" | "article" | "profile";
+    author?: string;
+    publishedTime?: string;
+    modifiedTime?: string;
+    lang?: string;
+    canonicalURL?: string;
+    noindex?: boolean;
+    nofollow?: boolean;
+    structuredData?: object[];
+}
+
+const {
+    title,
+    description,
+    keywords = "consultoría software, desarrollo web, desarrollo móvil, evaluación candidatos, capacitación empresarial, servicios cloud, inteligencia artificial, desarrollo software Sonora, consultoría tecnológica Navojoa, desarrollo web Hermosillo, software Ciudad Obregón",
+    image = "/images/og-default.png",
+    imageAlt = "C4Cydonia - Consultoría y Desarrollo de Software",
+    type = "website",
+    author = "C4Cydonia",
+    publishedTime,
+    modifiedTime,
+    lang = "es",
+    canonicalURL,
+    noindex = false,
+    nofollow = false,
+    structuredData = [],
+} = Astro.props;
+
+// Get the current URL
+const currentURL = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
+
+// Get absolute image URL
+const imageURL = image.startsWith("http")
+    ? image
+    : new URL(image, Astro.site).href;
+
+// Determine alternate language URL
+const alternateLang = lang === "es" ? "en" : "es";
+const alternateURL = currentURL.replace(`/${lang}/`, `/${alternateLang}/`);
+
+// Site name
+const siteName = "C4Cydonia";
+
+// Twitter handle (update with actual handle if available)
+const twitterHandle = "@c4cydonia";
+
+// Robots meta content
+const robotsContent = `${noindex ? "noindex" : "index"}, ${nofollow ? "nofollow" : "follow"}`;
+
+// Organization structured data (always included)
+const organizationData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "C4Cydonia",
+    url: Astro.site?.href || "https://c4cydonia.com",
+    logo: new URL("/images/logo.png", Astro.site).href,
+    description:
+        "Consultoría y desarrollo de software profesional. Ofrecemos servicios de desarrollo web, móvil, cloud, evaluación de candidatos y capacitación empresarial.",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "Navojoa",
+        addressLocality: "Navojoa",
+        addressRegion: "Sonora",
+        postalCode: "85800",
+        addressCountry: "MX",
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: "27.0739",
+        longitude: "-109.4450",
+    },
+    telephone: "+52-6421-52-21-43",
+    email: "support@c4cydonia.com",
+    sameAs: [
+        // Add social media profiles here when available
+    ],
+    contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        telephone: "+52-6421-52-21-43",
+        email: "support@c4cydonia.com",
+        availableLanguage: ["Spanish", "English"],
+        areaServed: ["MX", "US"],
+    },
+};
+
+// LocalBusiness structured data for local SEO
+const localBusinessData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://c4cydonia.com/#localbusiness",
+    name: "C4Cydonia",
+    image: imageURL,
+    description: description,
+    url: Astro.site?.href || "https://c4cydonia.com",
+    telephone: "+52-6421-52-21-43",
+    email: "support@c4cydonia.com",
+    priceRange: "$$",
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "Navojoa",
+        addressLocality: "Navojoa",
+        addressRegion: "Sonora",
+        postalCode: "85800",
+        addressCountry: "MX",
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: "27.0739",
+        longitude: "-109.4450",
+    },
+    areaServed: [
+        // Sonora, México
+        {
+            "@type": "City",
+            name: "Navojoa",
+            addressRegion: "Sonora",
+            addressCountry: "MX",
+        },
+        {
+            "@type": "City",
+            name: "Ciudad Obregón",
+            addressRegion: "Sonora",
+            addressCountry: "MX",
+        },
+        {
+            "@type": "City",
+            name: "Hermosillo",
+            addressRegion: "Sonora",
+            addressCountry: "MX",
+        },
+        {
+            "@type": "City",
+            name: "Nogales",
+            addressRegion: "Sonora",
+            addressCountry: "MX",
+        },
+        // Arizona, USA
+        {
+            "@type": "City",
+            name: "Tucson",
+            addressRegion: "Arizona",
+            addressCountry: "US",
+        },
+        {
+            "@type": "City",
+            name: "Phoenix",
+            addressRegion: "Arizona",
+            addressCountry: "US",
+        },
+        // Sinaloa, México
+        {
+            "@type": "City",
+            name: "Los Mochis",
+            addressRegion: "Sinaloa",
+            addressCountry: "MX",
+        },
+        {
+            "@type": "City",
+            name: "Culiacán",
+            addressRegion: "Sinaloa",
+            addressCountry: "MX",
+        },
+        {
+            "@type": "City",
+            name: "Mazatlán",
+            addressRegion: "Sinaloa",
+            addressCountry: "MX",
+        },
+        // Baja California, México
+        {
+            "@type": "City",
+            name: "Tijuana",
+            addressRegion: "Baja California",
+            addressCountry: "MX",
+        },
+        {
+            "@type": "City",
+            name: "Mexicali",
+            addressRegion: "Baja California",
+            addressCountry: "MX",
+        },
+        {
+            "@type": "City",
+            name: "Ensenada",
+            addressRegion: "Baja California",
+            addressCountry: "MX",
+        },
+    ],
+    openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+    },
+};
+
+// Combine all structured data
+const allStructuredData = [
+    organizationData,
+    localBusinessData,
+    ...structuredData,
+];
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content={author} />
+<meta name="robots" content={robotsContent} />
+<meta name="googlebot" content={robotsContent} />
+<link rel="canonical" href={currentURL} />
+
+<!-- Language alternates -->
+<link rel="alternate" hreflang={lang} href={currentURL} />
+<link rel="alternate" hreflang={alternateLang} href={alternateURL} />
+<link rel="alternate" hreflang="x-default" href={currentURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={currentURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageURL} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content={lang === "es" ? "es_MX" : "en_US"} />
+<meta
+    property="og:locale:alternate"
+    content={lang === "es" ? "en_US" : "es_MX"}
+/>
+
+{
+    publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+    )
+}
+{
+    modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+    )
+}
+{
+    author && type === "article" && (
+        <meta property="article:author" content={author} />
+    )
+}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={currentURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageURL} />
+<meta name="twitter:image:alt" content={imageAlt} />
+<meta name="twitter:site" content={twitterHandle} />
+<meta name="twitter:creator" content={twitterHandle} />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="theme-color" content="#1e40af" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Structured Data (JSON-LD) -->
+{
+    allStructuredData.map((data) => (
+        <script type="application/ld+json" set:html={JSON.stringify(data)} />
+    ))
+}

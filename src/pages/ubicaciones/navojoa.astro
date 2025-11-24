@@ -1,0 +1,146 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const seoTitle = "Desarrollo de Software en Navojoa | C4Cydonia";
+const seoDescription =
+    "Empresa de desarrollo de software en Navojoa, Sonora. Consultoría tecnológica, desarrollo web y móvil, evaluación de candidatos y capacitación empresarial.";
+const seoKeywords =
+    "desarrollo software Navojoa, consultoría tecnológica Navojoa, desarrollo web Navojoa, desarrollo móvil Navojoa, programación Navojoa, servicios tecnológicos Navojoa, software Sonora";
+
+const localBusinessData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "C4Cydonia - Navojoa",
+    description: seoDescription,
+    address: {
+        "@type": "PostalAddress",
+        addressLocality: "Navojoa",
+        addressRegion: "Sonora",
+        postalCode: "85800",
+        addressCountry: "MX",
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: "27.0739",
+        longitude: "-109.4450",
+    },
+    areaServed: {
+        "@type": "City",
+        name: "Navojoa",
+        addressRegion: "Sonora",
+        addressCountry: "MX",
+    },
+};
+---
+
+<MainLayout
+    title={seoTitle}
+    description={seoDescription}
+    keywords={seoKeywords}
+    structuredData={[localBusinessData]}
+>
+    <section
+        class="bg-gradient-to-r from-primary-800 to-primary-600 text-white py-20"
+    >
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <span
+                    class="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 inline-block"
+                >
+                    🏢 Nuestra Ubicación Principal
+                </span>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    Desarrollo de Software en Navojoa
+                </h1>
+                <p class="text-xl md:text-2xl mb-8">
+                    Empresa local de tecnología en el corazón del sur de Sonora
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a
+                        href="/contact"
+                        class="btn bg-white text-primary-800 hover:bg-gray-100 font-bold py-3 px-8 rounded-md"
+                    >
+                        Contactar
+                    </a>
+                    <a
+                        href="/services"
+                        class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-800 font-bold py-3 px-8 rounded-md"
+                    >
+                        Nuestros Servicios
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">
+                    Servicios Profesionales en Navojoa
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3">
+                            💻 Desarrollo de Software a Medida
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Creamos soluciones personalizadas para empresas en
+                            Navojoa y el sur de Sonora.
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3">
+                            🌐 Desarrollo Web y E-commerce
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Sitios web modernos y tiendas en línea para negocios
+                            locales.
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3">
+                            📱 Aplicaciones Móviles
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Apps nativas y multiplataforma para iOS y Android.
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3">
+                            👥 Evaluación de Candidatos
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Selección de talento técnico para empresas en
+                            Navojoa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-primary-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Empresa Local de Navojoa</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Somos una empresa tecnológica con sede en Navojoa, comprometidos
+                con el desarrollo digital de nuestra región
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a
+                    href="/contact"
+                    class="btn bg-white text-primary-800 hover:bg-gray-100 font-bold py-3 px-8 rounded-md"
+                >
+                    Solicitar Información
+                </a>
+                <a
+                    href="tel:+526421522143"
+                    class="btn bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-800 font-bold py-3 px-8 rounded-md"
+                >
+                    📞 +52-6421-52-21-43
+                </a>
+            </div>
+        </div>
+    </section>
+</MainLayout>

@@ -1,26 +1,70 @@
 ---
 // MainLayout.astro
-import { ViewTransitions } from 'astro:transitions';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-import Analytics from '@vercel/analytics/astro'
+import { ViewTransitions } from "astro:transitions";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
+import "../styles/global.css";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title: string;
   description?: string;
+  keywords?: string;
+  image?: string;
+  imageAlt?: string;
+  type?: "website" | "article" | "profile";
+  author?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  structuredData?: object[];
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description = "Soluciones tecnológicas innovadoras y consultoría de software personalizada para empresas de todos los tamaños.",
+  keywords,
+  image,
+  imageAlt,
+  type,
+  author,
+  publishedTime,
+  modifiedTime,
+  noindex,
+  nofollow,
+  structuredData,
+} = Astro.props;
+
+// Determine language with region
+const currentLang = Astro.currentLocale || "es";
+const langWithRegion = currentLang === "es" ? "es-MX" : "en-US";
 ---
 
-<!DOCTYPE html>
-<html lang={Astro.currentLocale}>
+<!doctype html>
+<html lang={langWithRegion}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <title>{title}</title>
+
+    <!-- SEO Component -->
+    <SEO
+      title={title}
+      description={description}
+      keywords={keywords}
+      image={image}
+      imageAlt={imageAlt}
+      type={type}
+      author={author}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      lang={currentLang}
+      noindex={noindex}
+      nofollow={nofollow}
+      structuredData={structuredData}
+    />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -29,12 +73,17 @@ const { title, description } = Astro.props;
     <script>
       // Check for saved theme preference or respect OS preference
       const theme = (() => {
-        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
           return localStorage.getItem("theme");
         }
-        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
       })();
-      
+
       // Apply dark mode class if needed
       if (theme === "dark") {
         document.documentElement.classList.add("dark");
@@ -43,14 +92,16 @@ const { title, description } = Astro.props;
       }
     </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
+  <body
+    class="min-h-screen flex flex-col bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300"
+  >
     <Header />
     <main class="flex-grow">
       <slot />
     </main>
     <Footer />
-    
-    <Analytics /> 
+
+    <Analytics />
 
     <script>
       // Initialize visit counter
@@ -58,7 +109,7 @@ const { title, description } = Astro.props;
         // This is a placeholder - we'll implement the actual counter logic later
         console.log("Visit counted");
       };
-      
+
       // Count visit when page loads
       document.addEventListener("DOMContentLoaded", incrementVisitCount);
     </script>

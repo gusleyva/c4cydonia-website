@@ -1,158 +1,303 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
 
 // Language translations
 const translations = {
   es: {
     title: "Servicios | Consultoría y Desarrollo de Software",
     pageTitle: "Nuestros Servicios",
-    pageIntro: "Ofrecemos una amplia gama de servicios de consultoría y desarrollo de software para ayudar a su empresa a alcanzar sus objetivos tecnológicos.",
+    pageIntro:
+      "Ofrecemos una amplia gama de servicios de consultoría y desarrollo de software para ayudar a su empresa a alcanzar sus objetivos tecnológicos.",
     service1Title: "Consultoría Tecnológica",
-    service1Desc: "Asesoramiento experto para guiar su estrategia digital y optimizar sus procesos tecnológicos.",
+    service1Desc:
+      "Asesoramiento experto para guiar su estrategia digital y optimizar sus procesos tecnológicos.",
     service1Features: [
       "Auditoría de sistemas",
       "Planificación estratégica",
       "Optimización de procesos",
-      "Evaluación de seguridad"
+      "Evaluación de seguridad",
     ],
     service2Title: "Desarrollo de Software a Medida",
-    service2Desc: "Creamos soluciones de software personalizadas que satisfacen las necesidades específicas de su negocio.",
+    service2Desc:
+      "Creamos soluciones de software personalizadas que satisfacen las necesidades específicas de su negocio.",
     service2Features: [
       "Aplicaciones web",
       "Aplicaciones móviles",
       "Sistemas empresariales",
-      "Integraciones API"
+      "Integraciones API",
     ],
     service3Title: "Soluciones en la Nube",
-    service3Desc: "Servicios completos para migrar, gestionar y optimizar su infraestructura en la nube.",
+    service3Desc:
+      "Servicios completos para migrar, gestionar y optimizar su infraestructura en la nube.",
     service3Features: [
       "Migración a la nube",
       "Arquitectura cloud-native",
       "DevOps e implementación continua",
-      "Optimización de costos"
+      "Optimización de costos",
     ],
     service4Title: "Desarrollo Web",
-    service4Desc: "Diseño y desarrollo de sitios web atractivos y funcionales que representan su marca en línea.",
+    service4Desc:
+      "Diseño y desarrollo de sitios web atractivos y funcionales que representan su marca en línea.",
     service4Features: [
       "Diseño UX/UI responsivo",
       "Desarrollo frontend y backend",
       "CMS personalizados",
-      "Optimización SEO"
+      "Optimización SEO",
     ],
     service5Title: "Inteligencia Artificial y Machine Learning",
-    service5Desc: "Implementamos soluciones inteligentes que automatizan procesos y generan insights valiosos.",
+    service5Desc:
+      "Implementamos soluciones inteligentes que automatizan procesos y generan insights valiosos.",
     service5Features: [
       "Análisis predictivo",
       "Procesamiento de lenguaje natural",
       "Sistemas de recomendación",
-      "Automatización inteligente"
+      "Automatización inteligente",
     ],
     service6Title: "Mantenimiento y Soporte",
-    service6Desc: "Servicios continuos para mantener sus sistemas funcionando de manera óptima y segura.",
+    service6Desc:
+      "Servicios continuos para mantener sus sistemas funcionando de manera óptima y segura.",
     service6Features: [
       "Soporte técnico",
       "Actualizaciones de seguridad",
       "Monitoreo de rendimiento",
-      "Resolución de problemas"
+      "Resolución de problemas",
     ],
     service7Title: "Evaluación de Candidatos",
-    service7Desc: "Servicio especializado para evaluar y seleccionar el talento técnico más adecuado para su organización.",
+    service7Desc:
+      "Servicio especializado para evaluar y seleccionar el talento técnico más adecuado para su organización.",
     service7Features: [
       "Evaluación técnica personalizada",
       "Entrevistas técnicas especializadas",
       "Evaluación de habilidades blandas",
-      "Informes detallados de candidatos"
+      "Informes detallados de candidatos",
     ],
     service8Title: "Capacitación Empresarial",
-    service8Desc: "Programas de formación diseñados para potenciar las habilidades técnicas de su equipo y mejorar la productividad.",
+    service8Desc:
+      "Programas de formación diseñados para potenciar las habilidades técnicas de su equipo y mejorar la productividad.",
     service8Features: [
       "Capacitación en tecnologías específicas",
       "Workshops prácticos",
       "Mentoría técnica",
-      "Evaluación de competencias"
+      "Evaluación de competencias",
+    ],
+    service9Title: "Consultoría de Negocio y Decisiones Tecnológicas",
+    service9Desc:
+      "Servicio de acompañamiento estratégico para tomar decisiones informadas sobre compras de software y herramientas digitales. Analizamos lo que realmente necesita su negocio, los costos totales (licencias, capacitación, adopción) y alternativas gratuitas o más simples antes de comprometerse.",
+    service9Features: [
+      "Análisis de necesidades reales del negocio vs propuestas comerciales",
+      "Comparación entre versiones gratuitas, básicas y enterprise",
+      "Acompañamiento en juntas con proveedores y negociación",
+      "Revisión de contratos, costos ocultos y necesidades de capacitación",
     ],
     cta: "¿Interesado en nuestros servicios?",
-    ctaButton: "Contáctenos"
+    ctaButton: "Contáctenos",
   },
   en: {
     title: "Services | Consultancy and Software Development",
     pageTitle: "Our Services",
-    pageIntro: "We offer a wide range of consultancy and software development services to help your company achieve its technological goals.",
+    pageIntro:
+      "We offer a wide range of consultancy and software development services to help your company achieve its technological goals.",
     service1Title: "Technology Consulting",
-    service1Desc: "Expert advice to guide your digital strategy and optimize your technological processes.",
+    service1Desc:
+      "Expert advice to guide your digital strategy and optimize your technological processes.",
     service1Features: [
       "Systems audit",
       "Strategic planning",
       "Process optimization",
-      "Security assessment"
+      "Security assessment",
     ],
     service2Title: "Custom Software Development",
-    service2Desc: "We create customized software solutions that meet the specific needs of your business.",
+    service2Desc:
+      "We create customized software solutions that meet the specific needs of your business.",
     service2Features: [
       "Web applications",
       "Mobile applications",
       "Enterprise systems",
-      "API integrations"
+      "API integrations",
     ],
     service3Title: "Cloud Solutions",
-    service3Desc: "Comprehensive services to migrate, manage, and optimize your cloud infrastructure.",
+    service3Desc:
+      "Comprehensive services to migrate, manage, and optimize your cloud infrastructure.",
     service3Features: [
       "Cloud migration",
       "Cloud-native architecture",
       "DevOps and continuous deployment",
-      "Cost optimization"
+      "Cost optimization",
     ],
     service4Title: "Web Development",
-    service4Desc: "Design and development of attractive and functional websites that represent your brand online.",
+    service4Desc:
+      "Design and development of attractive and functional websites that represent your brand online.",
     service4Features: [
       "Responsive UX/UI design",
       "Frontend and backend development",
       "Custom CMS",
-      "SEO optimization"
+      "SEO optimization",
     ],
     service5Title: "Artificial Intelligence and Machine Learning",
-    service5Desc: "We implement intelligent solutions that automate processes and generate valuable insights.",
+    service5Desc:
+      "We implement intelligent solutions that automate processes and generate valuable insights.",
     service5Features: [
       "Predictive analytics",
       "Natural language processing",
       "Recommendation systems",
-      "Intelligent automation"
+      "Intelligent automation",
     ],
     service6Title: "Maintenance and Support",
-    service6Desc: "Ongoing services to keep your systems running optimally and securely.",
+    service6Desc:
+      "Ongoing services to keep your systems running optimally and securely.",
     service6Features: [
       "Technical support",
       "Security updates",
       "Performance monitoring",
-      "Troubleshooting"
+      "Troubleshooting",
     ],
     service7Title: "Candidate Evaluation",
-    service7Desc: "Specialized service to evaluate and select the most suitable technical talent for your organization.",
+    service7Desc:
+      "Specialized service to evaluate and select the most suitable technical talent for your organization.",
     service7Features: [
       "Customized technical assessment",
       "Specialized technical interviews",
       "Soft skills evaluation",
-      "Detailed candidate reports"
+      "Detailed candidate reports",
     ],
     service8Title: "Company Training",
-    service8Desc: "Training programs designed to enhance your team's technical skills and improve productivity.",
+    service8Desc:
+      "Training programs designed to enhance your team's technical skills and improve productivity.",
     service8Features: [
       "Training in specific technologies",
       "Practical workshops",
       "Technical mentoring",
-      "Competency assessment"
+      "Competency assessment",
+    ],
+    service9Title: "Business Consulting for Technology Decisions",
+    service9Desc:
+      "Strategic advisory service to make informed decisions about software purchases and digital tools. We assess what your business truly needs, total costs (licenses, training, adoption), and free or simpler alternatives before you commit.",
+    service9Features: [
+      "Analysis of real business needs vs commercial proposals",
+      "Comparison of free, basic, and enterprise plans",
+      "Support in vendor meetings and negotiation",
+      "Contract review, hidden costs, and training implications",
     ],
     cta: "Interested in our services?",
-    ctaButton: "Contact Us"
-  }
+    ctaButton: "Contact Us",
+  },
 };
 
 // Get language from URL parameter or default to Spanish
-const lang = Astro.url.searchParams.get('lang') || 'es';
-const t = translations[lang === 'en' ? 'en' : 'es'];
+const lang = Astro.url.searchParams.get("lang") || "es";
+const t = translations[lang === "en" ? "en" : "es"];
+
+// Enhanced SEO
+const seoTitle =
+  lang === "en"
+    ? "Our Services | Software Consulting & Development | C4Cydonia"
+    : "Nuestros Servicios | Consultoría y Desarrollo de Software | C4Cydonia";
+
+const seoDescription =
+  lang === "en"
+    ? "Professional software services: business consulting for technology decisions, technology consulting, custom development, web and mobile apps, cloud solutions, AI/ML, candidate evaluation, corporate training, technical support, and impartial technology decision advisory to avoid unnecessary expenses."
+    : "Servicios profesionales de software: consultoría de negocio y decisiones tecnológicas, consultoría tecnológica, desarrollo a medida, aplicaciones web y móviles, soluciones cloud, IA/ML, evaluación de candidatos, capacitación empresarial, soporte técnico y asesoría imparcial en decisiones tecnológicas y compras de software para evitar gastos innecesarios.";
+
+const seoKeywords =
+  lang === "en"
+    ? "technology consulting, custom software development, web development, mobile apps, cloud solutions, AI machine learning, candidate evaluation, corporate training, technical support, DevOps, technology decision advisory, business consulting, software purchase advisory, vendor evaluation"
+    : "consultoría tecnológica, desarrollo software a medida, desarrollo web, aplicaciones móviles, soluciones cloud, inteligencia artificial, evaluación candidatos, capacitación empresarial, soporte técnico, DevOps, asesoría decisiones tecnológicas, consultoría de negocio, asesoría compra software, evaluación proveedores";
+
+// Structured data for services
+const servicesStructuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType:
+      lang === "en" ? "Candidate Evaluation" : "Evaluación de Candidatos",
+    provider: {
+      "@type": "Organization",
+      name: "C4Cydonia",
+    },
+    description:
+      lang === "en"
+        ? "Specialized service to evaluate and select the most suitable technical talent for your organization."
+        : "Servicio especializado para evaluar y seleccionar el talento técnico más adecuado para su organización.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType:
+      lang === "en" ? "Company Training" : "Capacitación Empresarial",
+    provider: {
+      "@type": "Organization",
+      name: "C4Cydonia",
+    },
+    description:
+      lang === "en"
+        ? "Training programs designed to enhance your team's technical skills and improve productivity."
+        : "Programas de formación diseñados para potenciar las habilidades técnicas de su equipo y mejorar la productividad.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType:
+      lang === "en" ? "Technology Consulting" : "Consultoría Tecnológica",
+    provider: {
+      "@type": "Organization",
+      name: "C4Cydonia",
+    },
+    description:
+      lang === "en"
+        ? "Expert advice to guide your digital strategy and optimize your technological processes."
+        : "Asesoramiento experto para guiar su estrategia digital y optimizar sus procesos tecnológicos.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: lang === "en" ? "Web Development" : "Desarrollo Web",
+    provider: {
+      "@type": "Organization",
+      name: "C4Cydonia",
+    },
+    description:
+      lang === "en"
+        ? "Design and development of attractive and functional websites that represent your brand online."
+        : "Diseño y desarrollo de sitios web atractivos y funcionales que representan su marca en línea.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: lang === "en" ? "Cloud Solutions" : "Soluciones en la Nube",
+    provider: {
+      "@type": "Organization",
+      name: "C4Cydonia",
+    },
+    description:
+      lang === "en"
+        ? "Comprehensive services to migrate, manage, and optimize your cloud infrastructure."
+        : "Servicios completos para migrar, gestionar y optimizar su infraestructura en la nube.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType:
+      lang === "en"
+        ? "Business Consulting for Technology Decisions"
+        : "Consultoría de Negocio y Decisiones Tecnológicas",
+    provider: {
+      "@type": "Organization",
+      name: "C4Cydonia",
+    },
+    description:
+      lang === "en"
+        ? "Vendor-neutral advisory service to validate software purchases, compare alternatives (including free plans), and understand the real impact on your business before investing."
+        : "Servicio neutral al proveedor para validar compras de software, comparar alternativas (incluidas versiones gratuitas) y entender el impacto real en su negocio antes de invertir.",
+  },
+];
 ---
 
-<MainLayout title={t.title}>
+<MainLayout
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  structuredData={servicesStructuredData}
+>
   <!-- Page Header -->
   <section class="bg-primary-800 text-white py-16">
     <div class="container mx-auto px-4 text-center">
@@ -164,180 +309,431 @@ const t = translations[lang === 'en' ? 'en' : 'es'];
   <!-- Services Section -->
   <section class="py-16 bg-surface">
     <div class="container mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-12 mb-12">
-        <!-- Service 7 - Candidate Evaluation -->
-        <div class="bg-card p-8 rounded-lg shadow-md">
-          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-semibold mb-4">{t.service7Title}</h3>
-          <p class="mb-6">{t.service7Desc}</p>
-          <ul class="space-y-2">
-            {t.service7Features.map(feature => (
-              <li class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Service 8 - Company Training -->
-        <div class="bg-card p-8 rounded-lg shadow-md">
-          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-semibold mb-4">{t.service8Title}</h3>
-          <p class="mb-6">{t.service8Desc}</p>
-          <ul class="space-y-2">
-            {t.service8Features.map(feature => (
-              <li class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 mb-12">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
         <!-- Service 1 -->
         <div class="bg-card p-8 rounded-lg shadow-md">
-          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
             </svg>
           </div>
           <h3 class="text-2xl font-semibold mb-4">{t.service1Title}</h3>
           <p class="mb-6">{t.service1Desc}</p>
           <ul class="space-y-2">
-            {t.service1Features.map(feature => (
-              <li class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </li>
-            ))}
+            {
+              t.service1Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
           </ul>
         </div>
 
         <!-- Service 2 -->
         <div class="bg-card p-8 rounded-lg shadow-md">
-          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+              ></path>
             </svg>
           </div>
           <h3 class="text-2xl font-semibold mb-4">{t.service2Title}</h3>
           <p class="mb-6">{t.service2Desc}</p>
           <ul class="space-y-2">
-            {t.service2Features.map(feature => (
-              <li class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </li>
-            ))}
+            {
+              t.service2Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
           </ul>
         </div>
-      </div>
 
-      <div class="grid md:grid-cols-2 gap-12 mb-12">
-        <!-- Service 3 -->
+        <!-- Service 9 - Business Consulting for Technology Decisions glc destination -->
         <div class="bg-card p-8 rounded-lg shadow-md">
-          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 13h6m-6 4h6M9 9h3m2-6H7a2 2 0 00-2 2v14l4-2 4 2 4-2 4 2V9a2 2 0 00-2-2h-3l-2-4z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-semibold mb-4">{t.service3Title}</h3>
-          <p class="mb-6">{t.service3Desc}</p>
+          <h3 class="text-2xl font-semibold mb-4">{t.service9Title}</h3>
+          <p class="mb-6">{t.service9Desc}</p>
           <ul class="space-y-2">
-            {t.service3Features.map(feature => (
-              <li class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </li>
-            ))}
+            {
+              t.service9Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
           </ul>
         </div>
 
         <!-- Service 4 -->
         <div class="bg-card p-8 rounded-lg shadow-md">
-          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+              ></path>
             </svg>
           </div>
           <h3 class="text-2xl font-semibold mb-4">{t.service4Title}</h3>
           <p class="mb-6">{t.service4Desc}</p>
           <ul class="space-y-2">
-            {t.service4Features.map(feature => (
-              <li class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </li>
-            ))}
+            {
+              t.service4Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
           </ul>
         </div>
-      </div>
 
-      <div class="grid md:grid-cols-2 gap-12">
         <!-- Service 5 -->
         <div class="bg-card p-8 rounded-lg shadow-md">
-          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              ></path>
             </svg>
           </div>
           <h3 class="text-2xl font-semibold mb-4">{t.service5Title}</h3>
           <p class="mb-6">{t.service5Desc}</p>
           <ul class="space-y-2">
-            {t.service5Features.map(feature => (
-              <li class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </li>
-            ))}
+            {
+              t.service5Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
           </ul>
         </div>
 
         <!-- Service 6 -->
         <div class="bg-card p-8 rounded-lg shadow-md">
-          <div class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
             </svg>
           </div>
           <h3 class="text-2xl font-semibold mb-4">{t.service6Title}</h3>
           <p class="mb-6">{t.service6Desc}</p>
           <ul class="space-y-2">
-            {t.service6Features.map(feature => (
-              <li class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </li>
-            ))}
+            {
+              t.service6Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
           </ul>
         </div>
+
+        <!-- Service 7 - Candidate Evaluation -->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service7Title}</h3>
+          <p class="mb-6">{t.service7Desc}</p>
+          <ul class="space-y-2">
+            {
+              t.service7Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Service 8 - Company Training -->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service8Title}</h3>
+          <p class="mb-6">{t.service8Desc}</p>
+          <ul class="space-y-2">
+            {
+              t.service8Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <!-- Service 3 - Cloud solutions - Soluciones en la nube-->
+        <div class="bg-card p-8 rounded-lg shadow-md">
+          <div
+            class="w-16 h-16 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center mb-6"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">{t.service3Title}</h3>
+          <p class="mb-6">{t.service3Desc}</p>
+          <ul class="space-y-2">
+            {
+              t.service3Features.map((feature) => (
+                <li class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 text-accent mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        
+
       </div>
     </div>
   </section>
@@ -345,137 +741,340 @@ const t = translations[lang === 'en' ? 'en' : 'es'];
   <!-- Examples Section -->
   <section class="py-16 bg-primary-50 dark:bg-primary-900/20">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-4">{lang === 'en' ? 'Real-World Examples' : 'Ejemplos Reales'}</h2>
+      <h2 class="text-3xl font-bold text-center mb-4">
+        {lang === "en" ? "Real-World Examples" : "Ejemplos Reales"}
+      </h2>
       <p class="text-xl text-center mb-12 max-w-3xl mx-auto">
-        {lang === 'en' 
-          ? 'Discover how our services can transform your business with these practical examples' 
-          : 'Descubre cómo nuestros servicios pueden transformar tu negocio con estos ejemplos prácticos'}
+        {
+          lang === "en"
+            ? "Discover how our services can transform your business with these practical examples"
+            : "Descubre cómo nuestros servicios pueden transformar tu negocio con estos ejemplos prácticos"
+        }
       </p>
-      
+
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Example 1: WhatsApp Bot -->
         <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
-          <div class="w-12 h-12 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 rounded-full flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          <div
+            class="w-12 h-12 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 rounded-full flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">{lang === 'en' ? 'WhatsApp Business Bot' : 'Bot de WhatsApp Business'}</h3>
+          <h3 class="text-xl font-semibold mb-2">
+            {
+              lang === "en"
+                ? "WhatsApp Business Bot"
+                : "Bot de WhatsApp Business"
+            }
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {lang === 'en' 
-              ? 'Automated customer service that handles inquiries, appointments, and provides instant responses 24/7.' 
-              : 'Servicio al cliente automatizado que maneja consultas, citas y proporciona respuestas instantáneas 24/7.'}
+            {
+              lang === "en"
+                ? "Automated customer service that handles inquiries, appointments, and provides instant responses 24/7."
+                : "Servicio al cliente automatizado que maneja consultas, citas y proporciona respuestas instantáneas 24/7."
+            }
           </p>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <div
+            class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
-            {lang === 'en' ? 'Mobile Development' : 'Desarrollo Móvil'}
+            {lang === "en" ? "Mobile Development" : "Desarrollo Móvil"}
           </div>
         </div>
 
         <!-- Example 2: Local Shop Website -->
         <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
-          <div class="w-12 h-12 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-full flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          <div
+            class="w-12 h-12 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-full flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">{lang === 'en' ? 'Local Business Website' : 'Sitio Web para Negocios Locales'}</h3>
+          <h3 class="text-xl font-semibold mb-2">
+            {
+              lang === "en"
+                ? "Local Business Website"
+                : "Sitio Web para Negocios Locales"
+            }
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {lang === 'en' 
-              ? 'Professional websites with online ordering, inventory management, and customer reviews for local businesses.' 
-              : 'Sitios web profesionales con pedidos en línea, gestión de inventario y reseñas de clientes para negocios locales.'}
+            {
+              lang === "en"
+                ? "Professional websites with online ordering, inventory management, and customer reviews for local businesses."
+                : "Sitios web profesionales con pedidos en línea, gestión de inventario y reseñas de clientes para negocios locales."
+            }
           </p>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          <div
+            class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+              ></path>
             </svg>
-            {lang === 'en' ? 'Web Development' : 'Desarrollo Web'}
+            {lang === "en" ? "Web Development" : "Desarrollo Web"}
           </div>
         </div>
 
         <!-- Example 3: Mobile App -->
         <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
-          <div class="w-12 h-12 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 rounded-full flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          <div
+            class="w-12 h-12 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 rounded-full flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">{lang === 'en' ? 'Cross-Platform Mobile App' : 'Aplicación Móvil Multiplataforma'}</h3>
+          <h3 class="text-xl font-semibold mb-2">
+            {
+              lang === "en"
+                ? "Cross-Platform Mobile App"
+                : "Aplicación Móvil Multiplataforma"
+            }
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {lang === 'en' 
-              ? 'Native and hybrid applications that work seamlessly across iOS and Android with a consistent user experience.' 
-              : 'Aplicaciones nativas e híbridas que funcionan perfectamente en iOS y Android con una experiencia de usuario consistente.'}
+            {
+              lang === "en"
+                ? "Native and hybrid applications that work seamlessly across iOS and Android with a consistent user experience."
+                : "Aplicaciones nativas e híbridas que funcionan perfectamente en iOS y Android con una experiencia de usuario consistente."
+            }
           </p>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          <div
+            class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+              ></path>
             </svg>
-            {lang === 'en' ? 'Mobile Development' : 'Desarrollo Móvil'}
+            {lang === "en" ? "Mobile Development" : "Desarrollo Móvil"}
           </div>
         </div>
 
         <!-- Example 4: Data Analytics Dashboard -->
         <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
-          <div class="w-12 h-12 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-full flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          <div
+            class="w-12 h-12 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-full flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">{lang === 'en' ? 'Business Intelligence Dashboard' : 'Panel de Inteligencia de Negocios'}</h3>
+          <h3 class="text-xl font-semibold mb-2">
+            {
+              lang === "en"
+                ? "Business Intelligence Dashboard"
+                : "Panel de Inteligencia de Negocios"
+            }
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {lang === 'en' 
-              ? 'Interactive dashboards and reports that transform raw data into actionable insights for better decision-making.' 
-              : 'Paneles interactivos e informes que transforman datos brutos en información accionable para una mejor toma de decisiones.'}
+            {
+              lang === "en"
+                ? "Interactive dashboards and reports that transform raw data into actionable insights for better decision-making."
+                : "Paneles interactivos e informes que transforman datos brutos en información accionable para una mejor toma de decisiones."
+            }
           </p>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          <div
+            class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              ></path>
             </svg>
-            {lang === 'en' ? 'Data Analysis' : 'Análisis de Datos'}
+            {lang === "en" ? "Data Analysis" : "Análisis de Datos"}
           </div>
         </div>
 
         <!-- Example 5: System Migration -->
         <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
-          <div class="w-12 h-12 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 rounded-full flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          <div
+            class="w-12 h-12 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 rounded-full flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">{lang === 'en' ? 'Legacy System Modernization' : 'Modernización de Sistemas Legacy'}</h3>
+          <h3 class="text-xl font-semibold mb-2">
+            {
+              lang === "en"
+                ? "Legacy System Modernization"
+                : "Modernización de Sistemas Legacy"
+            }
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {lang === 'en' 
-              ? 'Seamless migration of outdated systems to modern platforms with minimal disruption to business operations.' 
-              : 'Migración sin problemas de sistemas obsoletos a plataformas modernas con mínima interrupción de las operaciones comerciales.'}
+            {
+              lang === "en"
+                ? "Seamless migration of outdated systems to modern platforms with minimal disruption to business operations."
+                : "Migración sin problemas de sistemas obsoletos a plataformas modernas con mínima interrupción de las operaciones comerciales."
+            }
           </p>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          <div
+            class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
             </svg>
-            {lang === 'en' ? 'System Migration' : 'Migración de Sistemas'}
+            {lang === "en" ? "System Migration" : "Migración de Sistemas"}
           </div>
         </div>
 
         <!-- Example 6: DevOps Implementation -->
         <div class="bg-white dark:bg-primary-800 p-6 rounded-lg shadow-md">
-          <div class="w-12 h-12 bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-full flex items-center justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          <div
+            class="w-12 h-12 bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-full flex items-center justify-center mb-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold mb-2">{lang === 'en' ? 'DevOps & CI/CD Implementation' : 'Implementación de DevOps y CI/CD'}</h3>
+          <h3 class="text-xl font-semibold mb-2">
+            {
+              lang === "en"
+                ? "DevOps & CI/CD Implementation"
+                : "Implementación de DevOps y CI/CD"
+            }
+          </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
-            {lang === 'en' 
-              ? 'Automated deployment pipelines, infrastructure as code, and best practices to accelerate development cycles.' 
-              : 'Tuberías de despliegue automatizadas, infraestructura como código y mejores prácticas para acelerar los ciclos de desarrollo.'}
+            {
+              lang === "en"
+                ? "Automated deployment pipelines, infrastructure as code, and best practices to accelerate development cycles."
+                : "Tuberías de despliegue automatizadas, infraestructura como código y mejores prácticas para acelerar los ciclos de desarrollo."
+            }
           </p>
-          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          <div
+            class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mr-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
-            {lang === 'en' ? 'DevOps' : 'DevOps'}
+            {lang === "en" ? "DevOps" : "DevOps"}
           </div>
         </div>
       </div>
@@ -486,7 +1085,10 @@ const t = translations[lang === 'en' ? 'en' : 'es'];
   <section class="py-16 bg-accent text-white">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-8">{t.cta}</h2>
-      <a href={`/contact${lang === 'en' ? '?lang=en' : ''}`} class="btn bg-white text-accent hover:bg-gray-100 font-bold py-3 px-8 rounded-md transition duration-300">
+      <a
+        href={`/contact${lang === "en" ? "?lang=en" : ""}`}
+        class="btn bg-white text-accent hover:bg-gray-100 font-bold py-3 px-8 rounded-md transition duration-300"
+      >
         {t.ctaButton}
       </a>
     </div>
